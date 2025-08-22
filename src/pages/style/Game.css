@@ -1,0 +1,13 @@
+.menu-container {
+  height: 100vh;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../assets/backgrounds/clinica.jpeg"); /* pon tu imagen en public/fondo.jpg */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+}

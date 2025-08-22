@@ -68,7 +68,7 @@ export default function Game() {
       </div>
 
       {/* Contenedor derecho / menú / juego */}
-      <div className="menu-container flex-1 bg-white">
+      <div className="game-container flex-1 bg-white">
         {/* Tu contenido de juego va aquí */}
       </div>
     </div>

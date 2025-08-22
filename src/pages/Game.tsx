@@ -75,7 +75,7 @@ export default function Game() {
           ))}
         </div>
 
-        {/* (Opcional) Muestra de puntos actuales */}
+       
          <p className="text-sm text-gray-500 mt-2">Puntos: {points}</p> 
       </div>
 

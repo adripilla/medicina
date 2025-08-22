@@ -12,8 +12,10 @@ const FALLBACK = {
     "theCaesarAndSidePart","turban","winterHat1","winterHat02","winterHat03","winterHat04","noHair"
   ],
   facialHair: ["blank", "beardLight", "beardMedium", "moustacheFancy", "moustacheMagnum"],
-  // Tonos de piel (HEX)
-  skinColor: ["F9D3B4","EAC393","D0A17F","A67449","8D5524","F2D3B1","C58C85"]
+  skinColor: ["F9D3B4","EAC393","D0A17F","A67449","8D5524","F2D3B1","C58C85"],
+  accessories: ["blank","eyepatch","kurt","prescription01","prescription02","round","sunglasses","wayfarers"],
+  eyes: ["closed","cry","default","eyeRoll","happy","hearts","side","squint","surprised","wink","winkWacky","xDizzy"],
+  mouth: ["concerned","default","disbelief","eating","grimace","sad","screamOpen","serious","smile","tongue","twinkle","vomit"]
 };
 
 // Clasificadores
@@ -34,7 +36,10 @@ export default function Personalizar() {
   const [hairColor, setHairColor] = useState<string>("#000000");
   const [facialHair, setFacialHair] = useState<string>(FALLBACK.facialHair[0]);
   const [facialHairColor, setFacialHairColor] = useState<string>("#2c1b18");
-  const [skinColor, setSkinColor] = useState<string>("#" + FALLBACK.skinColor[0]); // con #
+  const [skinColor, setSkinColor] = useState<string>("#" + FALLBACK.skinColor[0]);
+  const [accessory, setAccessory] = useState<string>(FALLBACK.accessories[0]);
+  const [eyes, setEyes] = useState<string>(FALLBACK.eyes[2]); // default
+  const [mouth, setMouth] = useState<string>(FALLBACK.mouth[8]); // smile
 
   // Cargar schema oficial
   useEffect(() => {
@@ -44,7 +49,7 @@ export default function Personalizar() {
       .catch(() => setSchema(null));
   }, []);
 
-  // Helpers para extraer enums del schema
+  // Helper para extraer enums
   const getEnum = (key: string, fb: string[]) => {
     const p = schema?.properties?.[key];
     const enums =
@@ -54,54 +59,49 @@ export default function Personalizar() {
     return enums.length ? enums : fb;
   };
 
-  // Listas “completas” (del schema o fallback)
+  // Enums (del schema o fallback)
   const enumTop = getEnum("top", FALLBACK.top);
   const enumFacialHair = getEnum("facialHair", FALLBACK.facialHair);
-
-  // Opciones de piel:
-  // 1) Si el schema provee "skinColor" como enum de HEX -> úsalo.
-  // 2) Si no, usa FALLBACK.skinColor.
   const enumSkinHex = getEnum("skinColor", FALLBACK.skinColor).map((v: string) =>
     v.startsWith("#") ? v.slice(1) : v
   );
+  const enumAccessories = getEnum("accessories", FALLBACK.accessories);
+  const enumEyes = getEnum("eyes", FALLBACK.eyes);
+  const enumMouth = getEnum("mouth", FALLBACK.mouth);
 
-  // Render del avatar
+  // Render avatar
   const svg = useMemo(() => {
     const asHex = (v: string) => v.replace("#", "");
     const opts: any = {
       seed: "doctor1",
       top: [top],
 
-      eyes: ["default"],
-      eyebrows: ["default"],
-      mouth: ["smile"],
+      eyes: [eyes],
+      mouth: [mouth],
+      accessories: [accessory],
 
-      // Vello facial
+      eyebrows: ["default"],
+
       facialHair: [facialHair],
       facialHairColor: [asHex(facialHairColor)],
       facialHairProbability: facialHair === "blank" ? 0 : 100,
 
-      // Ropa
-      clothing: ["blazerShirt"],
+      clothing: ["blazerAndShirt"], // fijo
       clothesColor: ["ffffff"],
 
-      // Color de piel
       skinColor: [asHex(skinColor)],
 
-      // Colores según tipo de 'top'
       ...(isHairLike(top) ? { hairColor: [asHex(hairColor)] } : {}),
       ...(isHatLike(top) ? { hatColor: [asHex(hairColor)] } : {}),
     };
 
     return createAvatar(avataaars, opts).toString();
-  }, [top, hairColor, facialHair, facialHairColor, skinColor]);
+  }, [top, hairColor, facialHair, facialHairColor, skinColor, accessory, eyes, mouth]);
 
   return (
     <div style={{ padding: 24 }}>
-      
-
+      <h1>✂️ Personalización de Avatar</h1>
       <div style={{ display: "flex", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
-        {/* Vista */}
         <div style={{ textAlign: "center" }}>
           <div
             style={{ width: 260, height: 260 }}
@@ -109,7 +109,6 @@ export default function Personalizar() {
           />
         </div>
 
-        {/* Controles */}
         <form
           onSubmit={(e) => e.preventDefault()}
           style={{
@@ -125,9 +124,7 @@ export default function Personalizar() {
             Corte (top):
             <select value={top} onChange={(e) => setTop(e.target.value)}>
               {enumTop.map((v: string) => (
-                <option key={v} value={v}>
-                  {v}
-                </option>
+                <option key={v} value={v}>{v}</option>
               ))}
             </select>
           </label>
@@ -139,7 +136,6 @@ export default function Personalizar() {
               value={hairColor}
               onChange={(e) => setHairColor(e.target.value)}
               disabled={!isHairLike(top) && !isHatLike(top)}
-              style={{ marginLeft: 8, verticalAlign: "middle" }}
             />
           </label>
 
@@ -147,9 +143,7 @@ export default function Personalizar() {
             Vello facial:
             <select value={facialHair} onChange={(e) => setFacialHair(e.target.value)}>
               {enumFacialHair.map((v: string) => (
-                <option key={v} value={v}>
-                  {v}
-                </option>
+                <option key={v} value={v}>{v}</option>
               ))}
             </select>
           </label>
@@ -161,8 +155,34 @@ export default function Personalizar() {
               value={facialHairColor}
               onChange={(e) => setFacialHairColor(e.target.value)}
               disabled={facialHair === "blank"}
-              style={{ marginLeft: 8, verticalAlign: "middle" }}
             />
+          </label>
+
+          <label>
+            Accesorios:
+            <select value={accessory} onChange={(e) => setAccessory(e.target.value)}>
+              {enumAccessories.map((v: string) => (
+                <option key={v} value={v}>{v}</option>
+              ))}
+            </select>
+          </label>
+
+          <label>
+            Ojos:
+            <select value={eyes} onChange={(e) => setEyes(e.target.value)}>
+              {enumEyes.map((v: string) => (
+                <option key={v} value={v}>{v}</option>
+              ))}
+            </select>
+          </label>
+
+          <label>
+            Boca:
+            <select value={mouth} onChange={(e) => setMouth(e.target.value)}>
+              {enumMouth.map((v: string) => (
+                <option key={v} value={v}>{v}</option>
+              ))}
+            </select>
           </label>
 
           <label>
@@ -176,26 +196,17 @@ export default function Personalizar() {
                     key={hex}
                     type="button"
                     onClick={() => setSkinColor(value)}
-                    title={`#${hex}`}
                     style={{
                       width: 28,
                       height: 28,
                       borderRadius: 999,
                       border: isActive ? "2px solid #111" : "1px solid #ccc",
-                      outline: "none",
                       background: value,
                       cursor: "pointer",
                     }}
                   />
                 );
               })}
-              {/* Selector libre HEX */}
-              <input
-                type="color"
-                value={skinColor}
-                onChange={(e) => setSkinColor(e.target.value)}
-                style={{ marginLeft: 8, verticalAlign: "middle", width: 40, height: 28, padding: 0, border: "none" }}
-              />
             </div>
           </label>
         </form>

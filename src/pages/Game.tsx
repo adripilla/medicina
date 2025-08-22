@@ -4,8 +4,7 @@ import "./style/Game.css";
 import Doctor from "../components/Doctor";
 
 // Corazón pixelado (8x7 “pixeles”)
-const HeartPixel = memo(({ size = 20 }: { size?: number }) => {
-  // Coordenadas (x,y) de cada “pixel” del corazón
+const HeartPixel = memo(({ size = 20, empty = false }: { size?: number; empty?: boolean }) => {
   const pixels: Array<[number, number]> = [
     [1,1],[2,1],[5,1],[6,1],
     [0,2],[3,2],[4,2],[7,2],
@@ -14,23 +13,10 @@ const HeartPixel = memo(({ size = 20 }: { size?: number }) => {
     [2,5],[3,5],[4,5],[5,5],
     [3,6],[4,6],
   ];
-  const scale = size / 8; // ancho base = 8 “pixeles”
   return (
-    <svg
-      width={size}
-      height={(7 * scale)}
-      viewBox="0 0 8 7"
-      shapeRendering="crispEdges"
-      style={{ imageRendering: "pixelated" }}
-      aria-label="corazón"
-    >
-      {/* borde oscuro opcional para look retro */}
+    <svg width={size} height={size * (7/8)} viewBox="0 0 8 7" shapeRendering="crispEdges">
       {pixels.map(([x, y], i) => (
-        <rect key={`b-${i}`} x={x} y={y} width="1" height="1" fill="#7f1d1d" />
-      ))}
-      {/* relleno */}
-      {pixels.map(([x, y], i) => (
-        <rect key={i} x={x+0.1} y={y+0.1} width="0.8" height="0.8" fill="#ef4444" />
+        <rect key={i} x={x} y={y} width="1" height="1" fill={empty ? "#e5e7eb" : "#ef4444"} />
       ))}
     </svg>
   );
@@ -69,9 +55,11 @@ export default function Game() {
         <p className="text-lg font-semibold text-gray-700">{name}</p>
 
         {/* Corazones pixelados */}
-        <div className="flex items-center gap-2 mt-1">
+      
+
+         <div className="flex items-center gap-2 mt-1">
           {Array.from({ length: 3 }).map((_, i) => (
-            <HeartPixel key={i} size={22} />
+            <HeartPixel key={i} size={22} empty={i >= lives} />
           ))}
         </div>
 

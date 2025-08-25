@@ -3,6 +3,7 @@ import { useEffect, useState, memo } from "react";
 import "./style/Game.css";
 import Doctor from "../components/Doctor";
 import QuizCard from "../components/QuizCard";
+import Persona from "../components/Persona";
 
 // Corazón pixelado (8x7 “pixeles”)
 const HeartPixel = memo(({ size = 20, empty = false }: { size?: number; empty?: boolean }) => {
@@ -68,6 +69,8 @@ export default function Game() {
 
        
          <p className="text-sm text-gray-500 mt-2">Puntos: {points}</p> 
+
+          <Persona/>
       </div>
 
       {/* Contenedor derecho / menú / juego */}
@@ -78,7 +81,10 @@ export default function Game() {
         correctIndex={1} // París es la correcta
         onAnswer={handleAnswer}
       />
+      
       </div>
+
+     
     </div>
   );
 }

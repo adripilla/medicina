@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("../../assets/backgrounds/sala-de-espera-dibujos-animados-la-ventana-ilustración-del-vector-ventanas-365080197.webp"); /* pon tu imagen en public/fondo.jpg */
+  background-image: url("../../assets/backgrounds/recepcionFondo.webp"); /* pon tu imagen en public/fondo.jpg */
   background-size: cover;
   background-position: center;
   color: white;

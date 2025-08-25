@@ -12,6 +12,7 @@
   "dependencies": {
     "@dicebear/collection": "^9.2.4",
     "@dicebear/core": "^9.2.4",
+    "framer-motion": "^12.23.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-nice-avatar": "^1.5.0",

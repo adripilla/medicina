@@ -2,6 +2,7 @@
 import { useEffect, useState, memo } from "react";
 import "./style/Game.css";
 import Doctor from "../components/Doctor";
+import QuizCard from "../components/QuizCard";
 
 // Corazón pixelado (8x7 “pixeles”)
 const HeartPixel = memo(({ size = 20, empty = false }: { size?: number; empty?: boolean }) => {
@@ -36,16 +37,18 @@ export default function Game() {
         if (parsed.name) setName(parsed.name);
       }
     } catch {}
-    // Inicializa estado del juego
     setPoints(0);
     setLives(3);
-
-    // (Opcional) Persistir estado inicial del juego
-    localStorage.setItem(
-      "game-state",
-      JSON.stringify({ points: 0, lives: 3, startedAt: Date.now() })
-    );
+    localStorage.setItem("game-state", JSON.stringify({ points: 0, lives: 3, startedAt: Date.now() }));
   }, []);
+
+   const handleAnswer = (ok: boolean) => {
+    if (ok) {
+      setPoints((p) => p + 100);
+    } else {
+      setLives((l) => Math.max(0, l - 1));
+    }
+  };
 
   return (
     <div className="h-full w-full flex">
@@ -69,7 +72,12 @@ export default function Game() {
 
       {/* Contenedor derecho / menú / juego */}
       <div className="game-container flex-1 bg-white">
-        {/* Tu contenido de juego va aquí */}
+         <QuizCard
+        question="¿Cuál es la capital de Francia?"
+        answers={["Madrid", "París", "Roma", "Berlín"]}
+        correctIndex={1} // París es la correcta
+        onAnswer={handleAnswer}
+      />
       </div>
     </div>
   );

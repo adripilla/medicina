@@ -1,0 +1,552 @@
+{
+  "1": {
+    "preguntas": {
+      "introduccion": "Al ponerse nervioso, nota que sus pupilas se agrandan.",
+      "1": "Contracción del esfínter del iris (miosis)",
+      "2": "Contracción del músculo radial del iris (midriasis)",
+      "3": "Acomodación para visión cercana",
+      "4": "Lagratimeo profuso",
+      "correcta": 2
+    },
+    "sintomas": ["Midriasis", "Receptor α1", "Estimulación simpática ocular"]
+  },
+  "2": {
+    "preguntas": {
+      "introduccion": "Al leer de cerca, su pupila se hace pequeña.",
+      "1": "Relajación del músculo ciliar (visión lejana)",
+      "2": "Contracción del esfínter del iris (miosis)",
+      "3": "Midriasis por músculo radial",
+      "4": "Aumento de presión intraocular",
+      "correcta": 2
+    },
+    "sintomas": ["Miosis", "M3 (parasimpático)", "Contracción esfínter del iris"]
+  },
+  "3": {
+    "preguntas": {
+      "introduccion": "Un conductor mira señales lejanas sin esfuerzo.",
+      "1": "Contracción del músculo ciliar (visión cercana)",
+      "2": "Relajación del músculo ciliar (visión lejana)",
+      "3": "Miosis",
+      "4": "Lagrimeo reflejo",
+      "correcta": 2
+    },
+    "sintomas": ["Relajación ciliar", "β2", "Visión lejana"]
+  },
+  "4": {
+    "preguntas": {
+      "introduccion": "Paciente con ojos irritados y lagrimeo al humo.",
+      "1": "Inhibición de secreción lagrimal",
+      "2": "Secreción lagrimal (parasimpático)",
+      "3": "Midriasis",
+      "4": "Relajación ciliar",
+      "correcta": 2
+    },
+    "sintomas": ["Secreción lagrimal", "M3", "Reflejo parasimpático"]
+  },
+  "5": {
+    "preguntas": {
+      "introduccion": "Siente el corazón acelerado al subir escaleras.",
+      "1": "Estimulación M2 en nodo SA",
+      "2": "Bloqueo β1 en nodo SA",
+      "3": "Estimulación β1 en nodo SA",
+      "4": "Aumento del tono vagal",
+      "correcta": 3
+    },
+    "sintomas": ["Taquicardia sinusal", "β1", "Nodo sinoauricular"]
+  },
+  "6": {
+    "preguntas": {
+      "introduccion": "Tras masaje carotídeo, el pulso se enlentece.",
+      "1": "Estimulación M2 cardiaca",
+      "2": "Estimulación β1 cardiaca",
+      "3": "Aumento de conducción AV",
+      "4": "Vasoconstricción cutánea",
+      "correcta": 1
+    },
+    "sintomas": ["Bradicardia", "M2", "Disminución automatismo SA"]
+  },
+  "7": {
+    "preguntas": {
+      "introduccion": "Un atleta toma un agonista β y mejora la conducción AV.",
+      "1": "Disminución de la conducción AV (M2)",
+      "2": "Bloqueo de receptores nicotínicos",
+      "3": "Aumento de conducción AV (β1)",
+      "4": "Miosis",
+      "correcta": 3
+    },
+    "sintomas": ["↑ conducción AV", "β1", "Nodo AV"]
+  },
+  "8": {
+    "preguntas": {
+      "introduccion": "Con adrenalina, mejora la fuerza de contracción ventricular.",
+      "1": "Bloqueo M2",
+      "2": "Estimulación β1",
+      "3": "Estimulación α2",
+      "4": "Acción M3",
+      "correcta": 2
+    },
+    "sintomas": ["↑ inotropismo", "β1", "Ventrículo"]
+  },
+  "9": {
+    "preguntas": {
+      "introduccion": "Un fármaco vagomimético baja la frecuencia cardiaca.",
+      "1": "Estimulación β1",
+      "2": "Estimulación M2",
+      "3": "Estimulación α1",
+      "4": "Estimulación β2",
+      "correcta": 2
+    },
+    "sintomas": ["Bradicardia", "M2", "Disminuye automatismo SA"]
+  },
+  "10": {
+    "preguntas": {
+      "introduccion": "Aplicación local causa palidez cutánea intensa.",
+      "1": "Vasodilatación β2",
+      "2": "Vasoconstricción α1 en piel",
+      "3": "Mediación M3 endotelial",
+      "4": "Aumento de flujo coronario",
+      "correcta": 2
+    },
+    "sintomas": ["Vasoconstricción cutánea", "α1", "Arteriolas piel/mucosa"]
+  },
+  "11": {
+    "preguntas": {
+      "introduccion": "Durante ejercicio, aumenta flujo en músculo esquelético.",
+      "1": "Constricción α1 predominante",
+      "2": "Dilatación β2 en vasos del músculo",
+      "3": "Vasoconstricción M3",
+      "4": "Dilatación α2",
+      "correcta": 2
+    },
+    "sintomas": ["Vasodilatación", "β2", "Lecho muscular"]
+  },
+  "12": {
+    "preguntas": {
+      "introduccion": "Dolor anginoso mejora con vasodilatador coronario.",
+      "1": "Vasoconstricción α1 coronaria",
+      "2": "Dilatación β2 coronaria",
+      "3": "Miosis",
+      "4": "Broncoconstricción",
+      "correcta": 2
+    },
+    "sintomas": ["Vasodilatación coronaria", "β2", "↑ flujo coronario"]
+  },
+  "13": {
+    "preguntas": {
+      "introduccion": "Un aerosol produce alivio rápido de disnea.",
+      "1": "Contracción del músculo liso bronquial",
+      "2": "Relajación del músculo liso bronquial",
+      "3": "Aumento de secreción bronquial",
+      "4": "Vasoconstricción pulmonar",
+      "correcta": 2
+    },
+    "sintomas": ["Broncodilatación", "β2", "Músculo liso respiratorio"]
+  },
+  "14": {
+    "preguntas": {
+      "introduccion": "Con humo, hay moco abundante en vía aérea.",
+      "1": "Inhibición M3 glandular",
+      "2": "Estimulación M3 glandular (secreción)",
+      "3": "Estimulación α2 bronquial",
+      "4": "Bloqueo β2",
+      "correcta": 2
+    },
+    "sintomas": ["Secreción bronquial", "M3", "Glándulas bronquiales"]
+  },
+  "15": {
+    "preguntas": {
+      "introduccion": "Tras estrés, se eleva la presión por vasoconstricción arterial.",
+      "1": "M3 endotelial",
+      "2": "α1 en arteriolas",
+      "3": "β2 en arteriolas",
+      "4": "M2 cardíaco",
+      "correcta": 2
+    },
+    "sintomas": ["Vasoconstricción", "α1", "Arteriolas sistémicas"]
+  },
+  "16": {
+    "preguntas": {
+      "introduccion": "Un donador de NO causa enrojecimiento cutáneo.",
+      "1": "Contracción α1",
+      "2": "Dilata por M3 endotelial → NO",
+      "3": "Vasoconstricción β2",
+      "4": "Miosis",
+      "correcta": 2
+    },
+    "sintomas": ["Vasodilatación", "M3 endotelio → NO", "Efecto parasimpático"]
+  },
+  "17": {
+    "preguntas": {
+      "introduccion": "Náusea, menos ruidos intestinales y estreñimiento por estrés.",
+      "1": "↑ motilidad intestinal (M3)",
+      "2": "↓ motilidad intestinal (α/β simpático)",
+      "3": "Contracción del detrusor",
+      "4": "Hipersecreción gástrica",
+      "correcta": 2
+    },
+    "sintomas": ["Disminución motilidad", "α1, α2, β1, β2", "Intestino"]
+  },
+  "18": {
+    "preguntas": {
+      "introduccion": "Anticolinesterásico provoca cólicos y diarrea.",
+      "1": "Relaja esfínteres intestinales",
+      "2": "Aumenta motilidad y secreción GI (M3)",
+      "3": "Inhibe secreción gástrica",
+      "4": "Broncodilatación",
+      "correcta": 2
+    },
+    "sintomas": ["↑ motilidad/tono", "M3", "Tracto gastrointestinal"]
+  },
+  "19": {
+    "preguntas": {
+      "introduccion": "Antagonista α alivia espasmo del esfínter GI.",
+      "1": "Contracción de esfínteres (α1)",
+      "2": "Relajación de esfínteres GI",
+      "3": "Miosis",
+      "4": "Bradicardia",
+      "correcta": 2
+    },
+    "sintomas": ["Relajación esfínteres", "M3", "Parasimpatomimético"]
+  },
+  "20": {
+    "preguntas": {
+      "introduccion": "Paciente con úlcera: fármaco reduce secreción gástrica.",
+      "1": "Bloqueo M3 de células parietales",
+      "2": "Agonismo β2",
+      "3": "Agonismo α1",
+      "4": "Aumento de histamina",
+      "correcta": 1
+    },
+    "sintomas": ["↓ secreción ácida", "Bloqueo M3", "Estómago"]
+  },
+  "21": {
+    "preguntas": {
+      "introduccion": "Tras salbutamol, hay temblor fino y mejora glucemia durante ejercicio.",
+      "1": "↓ glucogenólisis hepática",
+      "2": "↑ glucogenólisis y gluconeogénesis hepática",
+      "3": "↓ lipólisis",
+      "4": "Inhibición de renina",
+      "correcta": 2
+    },
+    "sintomas": ["Glucogenólisis/GNG", "β2 y α1", "Hígado"]
+  },
+  "22": {
+    "preguntas": {
+      "introduccion": "Frío intenso: piel con sudor localizado en palmas.",
+      "1": "Sudoración generalizada M3",
+      "2": "Sudoración localizada α1",
+      "3": "Inhibición colinérgica",
+      "4": "Miosis",
+      "correcta": 2
+    },
+    "sintomas": ["Secreción localizada", "α1", "Glándulas sudoríparas apocrinas"]
+  },
+  "23": {
+    "preguntas": {
+      "introduccion": "Calor ambiental: sudoración profusa general.",
+      "1": "Mediado por receptores muscarínicos",
+      "2": "α1 cutáneo",
+      "3": "β1 cardíaco",
+      "4": "Nicotínicos Nn",
+      "correcta": 1
+    },
+    "sintomas": ["Sudoración general", "Simpático colinérgico M3", "Termorregulación"]
+  },
+  "24": {
+    "preguntas": {
+      "introduccion": "Paciente con urgencia miccional; agonista β alivia.",
+      "1": "Contracción del detrusor",
+      "2": "Relajación del detrusor",
+      "3": "Relajación del esfínter uretral",
+      "4": "Aumento del peristaltismo",
+      "correcta": 2
+    },
+    "sintomas": ["Relaja detrusor", "β2", "Vejiga urinaria"]
+  },
+  "25": {
+    "preguntas": {
+      "introduccion": "Dificultad para iniciar micción por fármaco nasal.",
+      "1": "Bloqueo α1 del cuello vesical",
+      "2": "Estimulación α1 del trígono y esfínter",
+      "3": "Estimulación M3 del detrusor",
+      "4": "Bloqueo β2",
+      "correcta": 2
+    },
+    "sintomas": ["Contracción esfínter", "α1", "Retención urinaria"]
+  },
+  "26": {
+    "preguntas": {
+      "introduccion": "Hipotensión: renina plasmática elevada tras isoproterenol.",
+      "1": "Disminuye renina (α2)",
+      "2": "Aumenta renina (β1 yuxtaglomerular)",
+      "3": "Efecto M3 renal",
+      "4": "Bloqueo nicotínico",
+      "correcta": 2
+    },
+    "sintomas": ["↑ renina", "β1", "Células yuxtaglomerulares"]
+  },
+  "27": {
+    "preguntas": {
+      "introduccion": "Gestante a término con tono uterino alto por fármaco nasal.",
+      "1": "Relajación uterina β2",
+      "2": "Contracción uterina α1",
+      "3": "Efecto M3 uterino",
+      "4": "Bloqueo β1",
+      "correcta": 2
+    },
+    "sintomas": ["Contracción uterina", "α1", "Embarazo a término"]
+  },
+  "28": {
+    "preguntas": {
+      "introduccion": "Utero no gestante con agonista β muestra relajación.",
+      "1": "α1",
+      "2": "β2",
+      "3": "M3",
+      "4": "Nn",
+      "correcta": 2
+    },
+    "sintomas": ["Relajación uterina", "β2", "No embarazada"]
+  },
+  "29": {
+    "preguntas": {
+      "introduccion": "Varón con fármaco simpaticomimético presenta eyaculación.",
+      "1": "β2",
+      "2": "α1",
+      "3": "M3",
+      "4": "β1",
+      "correcta": 2
+    },
+    "sintomas": ["Eyaculación", "α1", "Órganos sexuales masculinos"]
+  },
+  "30": {
+    "preguntas": {
+      "introduccion": "Sudoración general tras acetilcolina.",
+      "1": "M3 en glándulas ecrinas (simpático colinérgico)",
+      "2": "β2",
+      "3": "α2",
+      "4": "Nicotínico Nm",
+      "correcta": 1
+    },
+    "sintomas": ["Sudoración difusa", "M3", "Simpático colinérgico"]
+  },
+  "31": {
+    "preguntas": {
+      "introduccion": "Palidez y frío en dedos por vasoespasmo.",
+      "1": "Dilatación β2",
+      "2": "Constricción α1 en arteriolas digitales",
+      "3": "M3 endotelial",
+      "4": "M2 cardíaco",
+      "correcta": 2
+    },
+    "sintomas": ["Vasoconstricción periférica", "α1", "Fenómeno isquémico"]
+  },
+  "32": {
+    "preguntas": {
+      "introduccion": "Inhalador broncodilatador mejora sibilancias.",
+      "1": "Miosis",
+      "2": "β2 bronquial",
+      "3": "α1 bronquial",
+      "4": "M3 glandular",
+      "correcta": 2
+    },
+    "sintomas": ["Broncodilatación", "β2", "Asma/EPOC"]
+  },
+  "33": {
+    "preguntas": {
+      "introduccion": "Paciente con hipersalivación acuosa por fármaco.",
+      "1": "α1 salival",
+      "2": "M3 salival (acuosa)",
+      "3": "β1 salival",
+      "4": "α2 salival",
+      "correcta": 2
+    },
+    "sintomas": ["Secreción salival acuosa", "M3", "Glándulas salivales"]
+  },
+  "34": {
+    "preguntas": {
+      "introduccion": "Aplicación tópica produce saliva espesa y viscosa.",
+      "1": "M3",
+      "2": "α1",
+      "3": "β2",
+      "4": "M2",
+      "correcta": 2
+    },
+    "sintomas": ["Secreción viscosa", "α1", "Salival simpática"]
+  },
+  "35": {
+    "preguntas": {
+      "introduccion": "Fármaco causa piloerección cutánea.",
+      "1": "β2",
+      "2": "α1 en músculo piloerector",
+      "3": "M3",
+      "4": "Nn",
+      "correcta": 2
+    },
+    "sintomas": ["Erector del pelo", "α1", "Respuesta simpática"]
+  },
+  "36": {
+    "preguntas": {
+      "introduccion": "Niño con midriasis y visión borrosa para cerca tras descongestionante.",
+      "1": "M3 ciliar",
+      "2": "β2 ciliar",
+      "3": "α1 radial del iris",
+      "4": "M2 cardiaco",
+      "correcta": 3
+    },
+    "sintomas": ["Midriasis", "α1", "Dificulta visión cercana"]
+  },
+  "37": {
+    "preguntas": {
+      "introduccion": "Paciente con hipertensión portal mejora liberación de glucosa tras agonista β.",
+      "1": "Inhibe glucogenólisis",
+      "2": "Estimula glucogenólisis hepática",
+      "3": "Estimula secreción ácida gástrica",
+      "4": "Inhibe renina",
+      "correcta": 2
+    },
+    "sintomas": ["Glucogenólisis", "β2/α1", "Hígado"]
+  },
+  "38": {
+    "preguntas": {
+      "introduccion": "Joven nervioso con temblor fino y hipopotasemia leve tras agonista.",
+      "1": "↑ entrada de K+ al músculo (β2)",
+      "2": "Bloqueo M2",
+      "3": "α1",
+      "4": "M3",
+      "correcta": 1
+    },
+    "sintomas": ["Captación de K+ muscular", "β2", "Temblor fino"]
+  },
+  "39": {
+    "preguntas": {
+      "introduccion": "Paciente en shock recibe adrenalina y libera catecolaminas de médula suprarrenal.",
+      "1": "Estimulación nicotínica Nn",
+      "2": "M3",
+      "3": "α2",
+      "4": "β3",
+      "correcta": 1
+    },
+    "sintomas": ["Secreción EPI/NE", "Receptores nicotínicos Nn", "Médula suprarrenal"]
+  },
+  "40": {
+    "preguntas": {
+      "introduccion": "Tras antagonista α1, disminuye la resistencia venosa.",
+      "1": "Vasoconstricción venosa",
+      "2": "Vasodilatación venosa",
+      "3": "Broncoconstricción",
+      "4": "Bradicardia",
+      "correcta": 2
+    },
+    "sintomas": ["Disminuye tono venoso", "α1 bloqueado", "Venas sistémicas"]
+  },
+  "41": {
+    "preguntas": {
+      "introduccion": "Paciente con cólico intestinal tras inhibidor de AChE.",
+      "1": "Relajación intestinal β2",
+      "2": "Disminución motilidad α2",
+      "3": "Aumento marcado de motilidad M3",
+      "4": "Vasodilatación coronaria",
+      "correcta": 3
+    },
+    "sintomas": ["Hipermotilidad", "M3", "Parasimpaticomimético"]
+  },
+  "42": {
+    "preguntas": {
+      "introduccion": "Varón con congestión nasal toma agonista α y presenta retención urinaria.",
+      "1": "Relajación del esfínter vesical (M3)",
+      "2": "Contracción del esfínter (α1)",
+      "3": "Relajación detrusor (M3)",
+      "4": "Aumento de peristaltismo",
+      "correcta": 2
+    },
+    "sintomas": ["Contracción cuello vesical", "α1", "Retención"]
+  },
+  "43": {
+    "preguntas": {
+      "introduccion": "Tras fármaco colinérgico, el paciente presenta broncorrea.",
+      "1": "β2",
+      "2": "M3 glandular",
+      "3": "α1",
+      "4": "M2",
+      "correcta": 2
+    },
+    "sintomas": ["Secreción bronquial", "M3", "Parasimpático"]
+  },
+  "44": {
+    "preguntas": {
+      "introduccion": "Estudiante con examen: piel pálida y manos frías.",
+      "1": "Dilatación cutánea β2",
+      "2": "Vasoconstricción cutánea α1",
+      "3": "M3 endotelial",
+      "4": "M2 cardiaco",
+      "correcta": 2
+    },
+    "sintomas": ["Vasoconstricción piel", "α1", "Respuesta al estrés"]
+  },
+  "45": {
+    "preguntas": {
+      "introduccion": "Paciente con diarrea secretora responde a agonista α2.",
+      "1": "↑ secreción intestinal",
+      "2": "↓ secreción intestinal (α2)",
+      "3": "Broncodilatación",
+      "4": "Miosis",
+      "correcta": 2
+    },
+    "sintomas": ["Inhibición secreción", "α2", "Intestino"]
+  },
+  "46": {
+    "preguntas": {
+      "introduccion": "Tras exposición a frío hay contracción de cápsula esplénica.",
+      "1": "β2",
+      "2": "α1",
+      "3": "M3",
+      "4": "Nn",
+      "correcta": 2
+    },
+    "sintomas": ["Contracción cápsula bazo", "α1", "Moviliza eritrocitos"]
+  },
+  "47": {
+    "preguntas": {
+      "introduccion": "Paciente con sudoración general por estrés emocional.",
+      "1": "Simpático colinérgico M3",
+      "2": "α1",
+      "3": "β1",
+      "4": "Nn",
+      "correcta": 1
+    },
+    "sintomas": ["Sudor ecrino", "M3", "Generalizada"]
+  },
+  "48": {
+    "preguntas": {
+      "introduccion": "Persona con mareo por hipotensión; atenúa con agonista α1.",
+      "1": "Vasodilatación venosa",
+      "2": "Vasoconstricción venosa (↑ retorno)",
+      "3": "M3",
+      "4": "β2",
+      "correcta": 2
+    },
+    "sintomas": ["↑ retorno venoso", "α1", "Venas"]
+  },
+  "49": {
+    "preguntas": {
+      "introduccion": "Paciente con taquicardia y manos calientes tras isoproterenol.",
+      "1": "β1 cardiaco y β2 vascular",
+      "2": "α1 cutáneo dominante",
+      "3": "M2 cardiaco",
+      "4": "M3 endotelial",
+      "correcta": 1
+    },
+    "sintomas": ["Taquicardia + vasodilatación", "β1/β2", "Isoproterenol"]
+  },
+  "50": {
+    "preguntas": {
+      "introduccion": "Varón con tratamiento simpaticomimético presenta dificultad para orinar.",
+      "1": "Relajación del trígono",
+      "2": "Contracción del trígono y esfínter (α1)",
+      "3": "Contracción del detrusor (M3)",
+      "4": "Aumento del peristaltismo",
+      "correcta": 2
+    },
+    "sintomas": ["Retención urinaria", "α1", "Vía urinaria baja"]
+  }
+}

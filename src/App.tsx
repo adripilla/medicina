@@ -3,6 +3,7 @@ import Menu from "./pages/Menu";
 import Game from "./pages/Game";
 import Final from "./pages/Final";
 import Personalizar from "./pages/Personalizar";
+import GameOver from "./pages/GameOver";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route path="/game" element={<Game />} />
         <Route path="/final" element={<Final />} />
         <Route path="/personalizar" element={<Personalizar />} />
+        <Route path="/gameover" element={<GameOver />} />
       </Routes>
     </Router>
   );

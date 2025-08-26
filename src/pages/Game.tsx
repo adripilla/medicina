@@ -20,7 +20,8 @@ type CasoN1a4 = {
     correcta: number; // 1..4
   };
   sintomas?: string[];
-  dialogos?: string[]; // opcional (pares doctor, impares paciente)
+  dialogos?: string[]; // pares doctor, impares paciente
+  retroalimentacion?: { acierto?: string; fallo?: string };
 };
 type Nivel1a4 = {
   contexto?: string;
@@ -42,6 +43,7 @@ type CasoN5 = {
   opciones: { a: string; b: string; c: string; d: string };
   respuesta_correcta: "a" | "b" | "c" | "d";
   dialogos?: string[];
+  retroalimentacion?: { acierto?: string; fallo?: string };
 };
 type Nivel5Loose = {
   nivel: number; // 5
@@ -62,7 +64,8 @@ type FlatQ = {
   answers: [string, string, string, string];
   correctIndex: 0 | 1 | 2 | 3;
   sintomas: string[];
-  dialogos: string[]; // conversación por caso
+  dialogos: string[];
+  retroalimentacion?: { acierto?: string; fallo?: string };
 };
 
 // ---------------- Utils ----------------
@@ -128,6 +131,7 @@ const flattenNivel1a4 = (nivelKey: string, nivel: Nivel1a4): FlatQ[] => {
       correctIndex,
       sintomas,
       dialogos,
+      retroalimentacion: caso.retroalimentacion,
     });
   });
   return out;
@@ -163,6 +167,7 @@ const flattenNivel5 = (n5: Nivel5Loose): FlatQ[] => {
       correctIndex,
       sintomas,
       dialogos,
+      retroalimentacion: caso.retroalimentacion,
     });
   });
   return out;
@@ -295,12 +300,19 @@ export default function Game() {
   const currentLevel = LEVELS[levelIdx];
   const currentQ = currentLevel?.questions[caseIdx];
   const [notas, setNotas] = useState<string[]>(currentQ?.sintomas ?? []);
-  // Toast para feedback
+  // Toast (para correctas)
   const [toast, setToast] = useState<{
     show: boolean;
     kind: "ok" | "error";
     text: string;
   }>({ show: false, kind: "ok", text: "" });
+  // Modal de retroalimentación para incorrectas
+  const [retroModal, setRetroModal] = useState<{
+    show: boolean;
+    text: string;
+    nextType: "case" | "levelComplete";
+    newLives: number;
+  } | null>(null);
 
   // Cargar nombre y estado inicial
   useEffect(() => {
@@ -365,33 +377,57 @@ export default function Game() {
   // Manejar respuesta
   const handleAnswer = (ok: boolean) => {
     if (!currentQ || lives <= 0) return;
-    setToast({
-      show: true,
-      kind: ok ? "ok" : "error",
-      text: ok ? "¡Correcto!" : "Incorrecto",
-    });
-    setTimeout(() => setToast((t) => ({ ...t, show: false })), 900);
+
     if (ok) {
+      const retroText = currentQ.retroalimentacion?.acierto || "¡Correcto!";
+      setToast({ show: true, kind: "ok", text: retroText });
+      setTimeout(() => setToast((t) => ({ ...t, show: false })), 1200);
+
       setPoints((p) => p + 100);
       setNotas((n) => [...n, "respuesta correcta"]);
+
+      // Avance inmediato
       if (caseIdx + 1 < currentLevel.questions.length) {
         setCaseIdx(caseIdx + 1);
         setPhase("conversation");
       } else {
         setPhase("levelComplete");
       }
-    } else {
-      setLives((l) => Math.max(0, l - 1));
-      setNotas((n) => [...n, "respuesta incorrecta"]);
-      if (lives - 1 > 0) {
-        if (caseIdx + 1 < currentLevel.questions.length) {
-          setCaseIdx(caseIdx + 1);
-          setPhase("conversation");
-        } else {
-          setPhase("levelComplete");
-        }
+      return;
+    }
+
+    // Incorrecta: mostrar modal con retroalimentación y avanzar solo al cerrar
+    const newLives = Math.max(0, lives - 1);
+    const nextType: "case" | "levelComplete" =
+      caseIdx + 1 < currentLevel.questions.length ? "case" : "levelComplete";
+    const retroText =
+      currentQ.retroalimentacion?.fallo ||
+      "Respuesta incorrecta. Revisa los principios fisiológicos del caso.";
+
+    setRetroModal({
+      show: true,
+      text: retroText,
+      nextType,
+      newLives,
+    });
+  };
+
+  // Cerrar modal de retroalimentación (aplica efectos diferidos)
+  const closeRetro = () => {
+    if (!retroModal) return;
+    setRetroModal(null);
+    setNotas((n) => [...n, "respuesta incorrecta"]);
+    setLives(retroModal.newLives);
+
+    if (retroModal.newLives > 0) {
+      if (retroModal.nextType === "case") {
+        setCaseIdx((i) => i + 1);
+        setPhase("conversation");
+      } else {
+        setPhase("levelComplete");
       }
     }
+    // Si newLives es 0, el useEffect de vidas navegará a /gameover
   };
 
   // Continuar después del nivel
@@ -435,6 +471,7 @@ export default function Game() {
         <p className="text-sm text-gray-500 mt-2">Puntos: {points}</p>
         <Persona key={`persona-${levelIdx}-${caseIdx}`} />
       </div>
+
       {/* Derecha: contenido */}
       <div className="flex-1 bg-white p-4 relative overflow-hidden">
         {/* Contexto del nivel */}
@@ -454,13 +491,15 @@ export default function Game() {
             </button>
           </CenterModal>
         )}
+
         {/* Conversación */}
         {phase === "conversation" && currentQ && (
           <Conversacion
             dialogos={currentQ.dialogos}
-            onFinish={handleConversationFinish}
+            onFinish={(done) => handleConversationFinish(done)}
           />
         )}
+
         {/* Quiz */}
         {phase === "quiz" && currentQ && (
           <div>
@@ -478,6 +517,7 @@ export default function Game() {
             </div>
           </div>
         )}
+
         {/* Nivel completado */}
         {phase === "levelComplete" && (
           <CenterModal onClose={continueAfterLevel}>
@@ -503,7 +543,8 @@ export default function Game() {
             </button>
           </CenterModal>
         )}
-        {/* Toast feedback */}
+
+        {/* Toast feedback (para correctas) */}
         {toast.show && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center"
@@ -523,6 +564,26 @@ export default function Game() {
               <p className="text-sm mt-1 opacity-80">Toca para continuar</p>
             </div>
           </div>
+        )}
+
+        {/* Modal de retroalimentación para incorrectas */}
+        {retroModal?.show && (
+          <CenterModal onClose={closeRetro}>
+            <h3 className="text-xl font-bold text-rose-700">
+              Retroalimentación
+            </h3>
+            <p className="mt-3 text-base text-gray-800 whitespace-pre-line">
+              {retroModal.text}
+            </p>
+            <div className="mt-5 flex justify-end">
+              <button
+                className="px-5 py-2 rounded-lg bg-rose-600 text-white font-semibold shadow hover:bg-rose-700"
+                onClick={closeRetro}
+              >
+                Continuar
+              </button>
+            </div>
+          </CenterModal>
         )}
       </div>
     </div>

@@ -68,13 +68,15 @@ npm install
 
 3.Ejecuta el servidor de desarrollo:
 
-```npm run dev
+```bash
+npm run dev
 
 ```
 
 4.Abre en el navegador:
 
-```http://localhost:5173
+```bash
+http://localhost:5173
 
 ```
 

@@ -1,69 +1,79 @@
-# React + TypeScript + Vite
+# 🩺 Quiz Médico Interactivo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es un **juego educativo** en React orientado a estudiantes de medicina y profesionales de la salud.  
+A través de casos clínicos simulados, el jugador interactúa con un avatar, revisa síntomas, participa en conversaciones y responde preguntas de opción múltiple.
 
-Currently, two official plugins are available:
+El objetivo es **aprender y reforzar conocimientos clínicos** de una forma divertida y dinámica.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Características
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 👩‍⚕️ **Avatar de Doctor(a)** que guía la experiencia.
+- 📋 **Casos clínicos interactivos** con preguntas de opción múltiple.
+- 💬 **Conversaciones simuladas** entre médico y paciente.
+- ❤️ **Sistema de vidas (corazones pixelados)**.
+- ⭐ **Puntos y logros** por respuestas correctas.
+- 📂 **Carpeta de expediente** con síntomas y notas del paciente.
+- 🎨 **Interfaz responsiva** (móvil y escritorio).
+- ⚡ Construido con **React + Vite + Tailwind CSS**.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tecnologías utilizadas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- [React](https://reactjs.org/) – UI.
+- [React Router](https://reactrouter.com/) – navegación.
+- [Tailwind CSS](https://tailwindcss.com/) – estilos.
+- [TypeScript](https://www.typescriptlang.org/) – tipado estático.
+- [Vite](https://vitejs.dev/) – bundler rápido.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📂 Estructura del proyecto
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+src/
+├─ components/
+│ ├─ Doctor.tsx # Avatar del doctor
+│ ├─ Persona.tsx # Avatar del paciente
+│ ├─ QuizCard.tsx # Componente de preguntas
+│ ├─ Conversacion.tsx # Diálogo médico-paciente
+│ ├─ Carpeta.tsx # Expediente del paciente
+│
+├─ pages/
+│ ├─ Game.tsx # Lógica principal del juego
+│ └─ datos.json # Casos clínicos (niveles)
+│
+├─ style/
+│ └─ Game.css # Estilos personalizados
+│
+└─ main.tsx # Punto de entrada
+
+---
+
+## 🚀 Instalación y ejecución
+
+1. Clona este repositorio:
+
+   ```bash
+   git clone https://github.com/tuusuario/quiz-medico.git
+   cd quiz-medico
+
+   Instala las dependencias:
+   ```
+
+npm install
+
+Ejecuta el servidor de desarrollo:
+
+npm run dev
+
+Abre en el navegador:
+
+http://localhost:5173
+
+📱 Responsive Design
+
+En escritorio el avatar del doctor aparece en la izquierda.
+
+En móvil el avatar del doctor se muestra arriba y el paciente al lado, ocupando el ancho completo.

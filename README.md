@@ -62,18 +62,28 @@ src/
 
 2.Instala las dependencias:
 
-````npm install
+```npm install
+
+```
 
 3.Ejecuta el servidor de desarrollo:
+
 ```npm run dev
+
+```
 
 4.Abre en el navegador:
 
 ```http://localhost:5173
+
+```
 
 📱 Responsive Design
 
 En escritorio el avatar del doctor aparece en la izquierda.
 
 En móvil el avatar del doctor se muestra arriba y el paciente al lado, ocupando el ancho completo.
-````
+
+```
+
+```

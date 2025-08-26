@@ -458,9 +458,9 @@ export default function Game() {
   }, [currentQ]);
 
   return (
-    <div className="h-full w-full flex">
+    <div className="w-full h-full flex flex-col md:flex-row">
       {/* Izquierda: perfil */}
-      <div className="h-full w-1/5 flex flex-col items-center gap-2 p-4 bg-gray-50">
+      <div className="w-full md:w-1/5 flex flex-col items-center gap-2 p-4 bg-gray-50">
         <Doctor size={200} />
         <p className="text-lg font-semibold text-gray-700">{name}</p>
         <div className="flex items-center gap-2 mt-1">
@@ -473,7 +473,7 @@ export default function Game() {
       </div>
 
       {/* Derecha: contenido */}
-      <div className="flex-1 bg-white p-4 relative overflow-hidden">
+      <div className="w-full md:flex-1 bg-white p-4 relative overflow-hidden">
         {/* Contexto del nivel */}
         {phase === "levelContext" && currentLevel?.contexto && (
           <CenterModal onClose={nextPhase}>

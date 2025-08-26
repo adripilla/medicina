@@ -65,11 +65,11 @@ src/
 ````npm install
 
 3.Ejecuta el servidor de desarrollo:
- ```npm run dev
+```npm run dev
 
 4.Abre en el navegador:
 
- ```http://localhost:5173
+```http://localhost:5173
 
 📱 Responsive Design
 

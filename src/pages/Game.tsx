@@ -461,7 +461,8 @@ export default function Game() {
     <div className="w-full h-full flex flex-col md:flex-row">
       {/* Izquierda: perfil */}
       <div className="w-full md:w-1/5 flex flex-col items-center gap-2 p-4 bg-gray-50">
-        <Doctor size={200} />
+        <Doctor size={160} className="md:size-[200px]" />
+
         <p className="text-lg font-semibold text-gray-700">{name}</p>
         <div className="flex items-center gap-2 mt-1">
           {Array.from({ length: 3 }).map((_, i) => (

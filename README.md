@@ -85,7 +85,3 @@ http://localhost:5173
 En escritorio el avatar del doctor aparece en la izquierda.
 
 En móvil el avatar del doctor se muestra arriba y el paciente al lado, ocupando el ancho completo.
-
-```
-
-```

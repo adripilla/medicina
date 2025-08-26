@@ -461,16 +461,24 @@ export default function Game() {
     <div className="w-full h-full flex flex-col md:flex-row">
       {/* Izquierda: perfil */}
       <div className="w-full md:w-1/5 flex flex-col items-center gap-2 p-4 bg-gray-50">
-        <Doctor size={160} className="md:size-[200px]" />
+        {/* Bloque Doctor + stats + corazones */}
+        <div className="flex w-full items-center justify-between md:flex-col md:items-center md:justify-start md:gap-2">
+          <div className="flex flex-col items-center">
+            <Doctor size={160} className="md:size-[200px]" />
+            <p className="text-lg font-semibold text-gray-700">{name}</p>
+            <div className="flex items-center gap-2 mt-1">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <HeartPixel key={i} size={22} empty={i >= lives} />
+              ))}
+            </div>
+            <p className="text-sm text-gray-500 mt-2">Puntos: {points}</p>
+          </div>
 
-        <p className="text-lg font-semibold text-gray-700">{name}</p>
-        <div className="flex items-center gap-2 mt-1">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <HeartPixel key={i} size={22} empty={i >= lives} />
-          ))}
+          {/* Persona: en móvil queda a la derecha, en desktop debajo */}
+          <div className="md:mt-2">
+            <Persona key={`persona-${levelIdx}-${caseIdx}`} />
+          </div>
         </div>
-        <p className="text-sm text-gray-500 mt-2">Puntos: {points}</p>
-        <Persona key={`persona-${levelIdx}-${caseIdx}`} />
       </div>
 
       {/* Derecha: contenido */}

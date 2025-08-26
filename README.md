@@ -58,22 +58,22 @@ src/
    ```bash
    git clone https://github.com/tuusuario/quiz-medico.git
    cd quiz-medico
-
-   Instala las dependencias:
    ```
 
-npm install
+2.Instala las dependencias:
 
-Ejecuta el servidor de desarrollo:
+````npm install
 
-npm run dev
+3.Ejecuta el servidor de desarrollo:
+ ```npm run dev
 
-Abre en el navegador:
+4.Abre en el navegador:
 
-http://localhost:5173
+ ```http://localhost:5173
 
 📱 Responsive Design
 
 En escritorio el avatar del doctor aparece en la izquierda.
 
 En móvil el avatar del doctor se muestra arriba y el paciente al lado, ocupando el ancho completo.
+````

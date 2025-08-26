@@ -62,8 +62,8 @@ src/
 
 2.Instala las dependencias:
 
-```npm install
-
+```bash
+npm install
 ```
 
 3.Ejecuta el servidor de desarrollo:

@@ -1,4 +1,4 @@
-// pages/Game.tsx
+// pages/Game.tsx (solo Recepcionista, orden secuencial, 3 casos por nivel)
 import { useEffect, useMemo, useState, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style/Game.css";
@@ -7,102 +7,87 @@ import QuizCard from "../components/QuizCard";
 import Persona from "../components/Persona";
 import Carpeta from "../components/Carpeta";
 import Conversacion from "../components/Conversacion";
+// IMPORTANTE: apunta a tu JSON actualizado (puede ser datos_neurorescue_dialogo_rd.json si así lo llamaste)
 import RAW from "./datos.json";
 
-// ---------------- Tipos base ----------------
-type CasoN1a4 = {
-  preguntas: {
-    introduccion: string;
-    "1": string;
-    "2": string;
-    "3": string;
-    "4": string;
-    correcta: number; // 1..4
-  };
-  sintomas?: string[];
-  dialogos?: string[]; // pares doctor, impares paciente
-  retroalimentacion?: { acierto?: string; fallo?: string };
+
+// ---------------- Tipos base (nuevo esquema) ----------------
+export type DialogoRD = { recepcionista?: string; doctora?: string };
+export type PreguntasN = {
+  introduccion: string;
+  "1": string;
+  "2": string;
+  "3": string;
+  "4": string;
+  correcta: number; // 1..4
 };
-type Nivel1a4 = {
+export type CasoNuevo = {
+  sistema?: string; // niveles 1-4
+  titulo?: string;  // nivel 5 (si aplica)
+  preguntas: PreguntasN;
+  sintomas?: string[];
+  dialogo?: DialogoRD; // NUEVO: recepcionista/doctora
+  retroalimentacion?: { acierto?: string; fallo?: string };
+  recompensa?: Record<string, any>;
+};
+export type NivelNuevo = {
   contexto?: string;
-  casos: Record<string, CasoN1a4>;
+  casos: Record<string, CasoNuevo>;
   resumen?: {
-    puntos_totales?: number;
+    PK_total_nivel?: number;
     powerups?: string[];
-    logros?: string[];
+    logros?: string[] | string;
     proximo_nivel?: string;
     titulo?: string;
   };
 };
 
-type CasoN5 = {
-  id: number;
-  titulo: string;
-  presentacion: { personaje: string; dialogo: string };
-  sintomas?: string[];
-  opciones: { a: string; b: string; c: string; d: string };
-  respuesta_correcta: "a" | "b" | "c" | "d";
-  dialogos?: string[];
-  retroalimentacion?: { acierto?: string; fallo?: string };
-};
-type Nivel5Loose = {
-  nivel: number; // 5
-  contexto?: string;
-  intro_dialogo?: { personaje: string; dialogo: string };
-  casos: CasoN5[];
-  resumen?: {
-    logros?: string[];
-    proximo_nivel?: string;
-    titulo?: string;
-  };
-};
-
-// Pregunta aplanada
-type FlatQ = {
+// Pregunta aplanada para UI
+export type FlatQ = {
   id: string;
   question: string;
   answers: [string, string, string, string];
   correctIndex: 0 | 1 | 2 | 3;
   sintomas: string[];
-  dialogos: string[];
+  dialogos: string[]; // Solo líneas con "Recepcionista: ..."
   retroalimentacion?: { acierto?: string; fallo?: string };
 };
 
 // ---------------- Utils ----------------
-const pickN = <T,>(arr: T[], n: number): T[] => {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a.slice(0, Math.max(0, Math.min(n, a.length)));
-};
-
-const ensureDialogos = (
-  fallbackIntro: string,
-  sintomas: string[],
-  existing?: string[]
+const dialogosSoloRecepcionista = (
+  dlg?: DialogoRD,
+  fallbackIntro?: string,
+  sintomas: string[] = []
 ): string[] => {
-  if (existing && existing.length > 0) return existing;
-  const doc = `Dra. Jessica: ${
-    fallbackIntro || "Por favor, valoremos rápidamente al paciente."
-  }`;
-  const pac = `Paciente: ${
-    sintomas.length
-      ? `Me preocupa ${sintomas[0].toLowerCase()}`
-      : "No me siento bien, doctora."
-  }`;
-  const doc2 = `Dra. Jessica: Haremos unas preguntas rápidas y decidiremos el manejo.`;
-  return [doc, pac, doc2];
+  const lines: string[] = [];
+  // Si hay texto de recepcionista, lo usamos
+  if (dlg?.recepcionista) lines.push(`Recepcionista: ${dlg.recepcionista}`);
+  // Si hay texto de doctora, también lo presentamos como recepcionista
+  if (dlg?.doctora) lines.push(`Dra. Jessica: ${dlg.doctora}`);
+
+  // Fallback si no viene diálogo
+  if (lines.length === 0) {
+    const intro = (fallbackIntro || "Ingreso listo para valoración").trim();
+    lines.push(`Recepcionista: Ingreso en triaje. Resumen: ${intro}`);
+    lines.push(
+      `Recepcionista: ${
+        sintomas.length
+          ? `Síntoma principal reportado: ${sintomas[0].toLowerCase()}.`
+          : "Se procederá con la valoración clínica."
+      }`
+    );
+  }
+  return lines;
 };
 
-// ---------------- Adaptadores por nivel ----------------
-const flattenNivel1a4 = (nivelKey: string, nivel: Nivel1a4): FlatQ[] => {
+// ---------------- Adaptador genérico para niveles 1-5 ----------------
+const flattenNivelGenerico = (nivelKey: string, nivel: NivelNuevo): FlatQ[] => {
   const out: FlatQ[] = [];
-  const ids = Object.keys(nivel.casos || {}).sort(
-    (a, b) => Number(a) - Number(b)
-  );
-  const elegidos = pickN(ids, 2); // 2 casos por nivel
+  // Orden numérico por id de caso
+  const ids = Object.keys(nivel.casos || {}).sort((a, b) => Number(a) - Number(b));
+  // Tomar SIEMPRE los primeros 3 en orden
+  const elegidos = ids.slice(0, 3);
+
   elegidos.forEach((casoId) => {
     const caso = nivel.casos[casoId];
     if (!caso?.preguntas) return;
@@ -113,19 +98,21 @@ const flattenNivel1a4 = (nivelKey: string, nivel: Nivel1a4): FlatQ[] => {
       String(p["3"] ?? ""),
       String(p["4"] ?? ""),
     ] as [string, string, string, string];
-    const correctIndex = Math.max(
-      0,
-      Math.min(3, (Number(p.correcta) || 1) - 1)
-    ) as 0 | 1 | 2 | 3;
+
+    const correctIndex = Math.max(0, Math.min(3, (Number(p.correcta) || 1) - 1)) as 0 | 1 | 2 | 3;
     const sintomas = caso.sintomas ?? [];
-    const question =
-      p.introduccion ||
-      `Paciente con ${
-        sintomas.slice(0, 2).join(", ") || "cuadro compatible"
-      }. ¿Cuál es la mejor opción?`;
-    const dialogos = ensureDialogos(p.introduccion, sintomas, caso.dialogos);
+    const sistemaOTitulo = caso.sistema || caso.titulo || `Caso ${casoId}`;
+
+    // Texto de la tarjeta de pregunta
+    const question = p.introduccion?.length
+      ? p.introduccion
+      : `Paciente con ${sintomas.slice(0, 2).join(", ") || "cuadro compatible"}. ¿Cuál es la mejor opción?`;
+
+    // Diálogo: SOLO recepcionista
+    const dialogos = dialogosSoloRecepcionista(caso.dialogo, p.introduccion, sintomas);
+
     out.push({
-      id: `${nivelKey.replace("nivel_", "")}:${casoId}`,
+      id: `${nivelKey.replace("nivel_", "")}:${casoId}:${sistemaOTitulo}`,
       question,
       answers,
       correctIndex,
@@ -137,71 +124,27 @@ const flattenNivel1a4 = (nivelKey: string, nivel: Nivel1a4): FlatQ[] => {
   return out;
 };
 
-const flattenNivel5 = (n5: Nivel5Loose): FlatQ[] => {
-  const out: FlatQ[] = [];
-  const letterToIndex: Record<"a" | "b" | "c" | "d", 0 | 1 | 2 | 3> = {
-    a: 0,
-    b: 1,
-    c: 2,
-    d: 3,
-  };
-  const elegidos = pickN(n5.casos || [], 2);
-  elegidos.forEach((caso) => {
-    const answers = [
-      caso.opciones.a,
-      caso.opciones.b,
-      caso.opciones.c,
-      caso.opciones.d,
-    ] as [string, string, string, string];
-    const correctIndex = letterToIndex[caso.respuesta_correcta];
-    const sintomas = caso.sintomas ?? [];
-    const intro =
-      caso.presentacion?.dialogo ||
-      `Paciente con ${sintomas.slice(0, 2).join(", ") || "cuadro complejo"}.`;
-    const question = `${intro}\n¿Cuál es la mejor explicación/acción?`;
-    const dialogos = ensureDialogos(intro, sintomas, caso.dialogos);
-    out.push({
-      id: `5:${caso.id}`,
-      question,
-      answers,
-      correctIndex,
-      sintomas,
-      dialogos,
-      retroalimentacion: caso.retroalimentacion,
-    });
-  });
-  return out;
-};
-
-type PlayLevel = {
-  key: string;
+// Estructura de nivel para el juego
+export type PlayLevel = {
+  key: string; // "1".."5"
   contexto?: string;
   questions: FlatQ[];
-  resumen?: Nivel1a4["resumen"] | Nivel5Loose["resumen"];
+  resumen?: NivelNuevo["resumen"];
 };
 
 const buildLevels = (raw: any): PlayLevel[] => {
   const levels: PlayLevel[] = [];
-  ["nivel_1", "nivel_2", "nivel_3", "nivel_4"].forEach((k) => {
+  ["nivel_1", "nivel_2", "nivel_3", "nivel_4", "nivel_5"].forEach((k) => {
     if (raw[k]) {
-      const nivel = raw[k] as Nivel1a4;
+      const nivel = raw[k] as NivelNuevo;
       levels.push({
         key: k.replace("nivel_", ""),
         contexto: nivel.contexto,
-        questions: flattenNivel1a4(k, nivel),
+        questions: flattenNivelGenerico(k, nivel),
         resumen: nivel.resumen,
       });
     }
   });
-  const n5 = raw?.nivel === 5 ? (raw as Nivel5Loose) : undefined;
-  if (n5) {
-    levels.push({
-      key: "5",
-      contexto: n5.contexto,
-      questions: flattenNivel5(n5),
-      resumen: n5.resumen,
-    });
-  }
   return levels;
 };
 
@@ -209,69 +152,26 @@ const buildLevels = (raw: any): PlayLevel[] => {
 const HeartPixel = memo(
   ({ size = 20, empty = false }: { size?: number; empty?: boolean }) => {
     const pixels: Array<[number, number]> = [
-      [1, 1],
-      [2, 1],
-      [5, 1],
-      [6, 1],
-      [0, 2],
-      [3, 2],
-      [4, 2],
-      [7, 2],
-      [0, 3],
-      [1, 3],
-      [2, 3],
-      [3, 3],
-      [4, 3],
-      [5, 3],
-      [6, 3],
-      [7, 3],
-      [1, 4],
-      [2, 4],
-      [3, 4],
-      [4, 4],
-      [5, 4],
-      [6, 4],
-      [2, 5],
-      [3, 5],
-      [4, 5],
-      [5, 5],
-      [3, 6],
-      [4, 6],
+      [1, 1], [2, 1], [5, 1], [6, 1],
+      [0, 2], [3, 2], [4, 2], [7, 2],
+      [0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3],
+      [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4],
+      [2, 5], [3, 5], [4, 5], [5, 5],
+      [3, 6], [4, 6],
     ];
     return (
-      <svg
-        width={size}
-        height={(size * 7) / 8}
-        viewBox="0 0 8 7"
-        shapeRendering="crispEdges"
-      >
+      <svg width={size} height={(size * 7) / 8} viewBox="0 0 8 7" shapeRendering="crispEdges">
         {pixels.map(([x, y], i) => (
-          <rect
-            key={i}
-            x={x}
-            y={y}
-            width="1"
-            height="1"
-            fill={empty ? "#e5e7eb" : "#ef4444"}
-          />
+          <rect key={i} x={x} y={y} width="1" height="1" fill={empty ? "#e5e7eb" : "#ef4444"} />
         ))}
       </svg>
     );
   }
 );
 
-function CenterModal({
-  children,
-  onClose,
-}: {
-  children: React.ReactNode;
-  onClose?: () => void;
-}) {
+function CenterModal({ children, onClose }: { children: React.ReactNode; onClose?: () => void }) {
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={onClose}>
       <div className="absolute inset-0 bg-black/30" />
       <div
         className="relative mx-4 max-w-lg w-full rounded-2xl px-6 py-6 bg-white border border-gray-200 shadow-2xl"
@@ -284,7 +184,7 @@ function CenterModal({
 }
 
 // ---------------- Estados del flujo ----------------
-type Phase = "levelContext" | "conversation" | "quiz" | "levelComplete";
+export type Phase = "levelContext" | "conversation" | "quiz" | "levelComplete";
 
 export default function Game() {
   const navigate = useNavigate();
@@ -301,11 +201,11 @@ export default function Game() {
   const currentQ = currentLevel?.questions[caseIdx];
   const [notas, setNotas] = useState<string[]>(currentQ?.sintomas ?? []);
   // Toast (para correctas)
-  const [toast, setToast] = useState<{
-    show: boolean;
-    kind: "ok" | "error";
-    text: string;
-  }>({ show: false, kind: "ok", text: "" });
+  const [toast, setToast] = useState<{ show: boolean; kind: "ok" | "error"; text: string }>({
+    show: false,
+    kind: "ok",
+    text: "",
+  });
   // Modal de retroalimentación para incorrectas
   const [retroModal, setRetroModal] = useState<{
     show: boolean;
@@ -327,13 +227,7 @@ export default function Game() {
     setLives(3);
     localStorage.setItem(
       "game-state",
-      JSON.stringify({
-        points: 0,
-        lives: 3,
-        levelIdx: 0,
-        caseIdx: 0,
-        startedAt: Date.now(),
-      })
+      JSON.stringify({ points: 0, lives: 3, levelIdx: 0, caseIdx: 0, startedAt: Date.now() })
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -353,6 +247,7 @@ export default function Game() {
         caseIdx,
       })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [caseIdx, levelIdx]);
 
   // Si vidas se acaban -> gameover
@@ -441,6 +336,18 @@ export default function Game() {
     setPhase("levelContext");
   };
 
+
+  const effectClass = useMemo(() => {
+  switch (currentLevel?.key) {
+    case "1": return "level-1";
+    case "2": return "level-2";
+    case "3": return "level-3";
+    case "4": return "level-4";
+    case "5": return "level-5";
+    default:  return "";
+  }
+}, [currentLevel?.key]);
+
   // Data para QuizCard
   const quizData = useMemo(() => {
     if (!currentQ) {
@@ -458,11 +365,11 @@ export default function Game() {
   }, [currentQ]);
 
   return (
-    <div className="w-full h-full flex flex-col md:flex-row">
+    <div className="w-full h-full flex flex-col md:flex-row ">
       {/* Izquierda: perfil */}
       <div className="w-full md:w-1/5 flex flex-col items-center gap-2 p-4 bg-gray-50">
         {/* Bloque Doctor + stats + corazones */}
-        <div className="flex w-full items-center justify-between md:flex-col md:items-center md:justify-start md:gap-2">
+        <div className="flex w-full  items-center justify-between md:flex-col md:items-center md:justify-start md:gap-2">
           <div className="flex flex-col items-center">
             <Doctor size={160} className="md:size-[200px]" />
             <p className="text-lg font-semibold text-gray-700">{name}</p>
@@ -482,16 +389,13 @@ export default function Game() {
       </div>
 
       {/* Derecha: contenido */}
-      <div className="w-full md:flex-1 bg-white p-4 relative overflow-hidden">
+      <div className={`w-full  md:flex-1 bg-white p-4 relative overflow-hidden game-container ${effectClass}`}>
+
         {/* Contexto del nivel */}
         {phase === "levelContext" && currentLevel?.contexto && (
           <CenterModal onClose={nextPhase}>
-            <h2 className="text-2xl font-bold text-gray-800">
-              Nivel {currentLevel.key}
-            </h2>
-            <p className="mt-4 text-base text-gray-700 whitespace-pre-line">
-              {currentLevel.contexto}
-            </p>
+            <h2 className="text-2xl font-bold text-gray-800">Nivel {currentLevel.key}</h2>
+            <p className="mt-4 text-base text-gray-700 whitespace-pre-line">{currentLevel.contexto}</p>
             <button
               className="mt-6 px-5 py-2 rounded-lg bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700"
               onClick={nextPhase}
@@ -501,12 +405,9 @@ export default function Game() {
           </CenterModal>
         )}
 
-        {/* Conversación */}
+        {/* Conversación (solo Recepcionista) */}
         {phase === "conversation" && currentQ && (
-          <Conversacion
-            dialogos={currentQ.dialogos}
-            onFinish={(done) => handleConversationFinish(done)}
-          />
+          <Conversacion dialogos={currentQ.dialogos} onFinish={(done) => handleConversationFinish(done)} />
         )}
 
         {/* Quiz */}
@@ -519,10 +420,7 @@ export default function Game() {
               onAnswer={handleAnswer}
             />
             <div className="flex justify-end mt-4">
-              <Carpeta
-                label={`Expediente del paciente (${currentQ.id})`}
-                notes={notas}
-              />
+              <Carpeta label={`Expediente del paciente (${currentQ.id})`} notes={notas} />
             </div>
           </div>
         )}
@@ -530,19 +428,12 @@ export default function Game() {
         {/* Nivel completado */}
         {phase === "levelComplete" && (
           <CenterModal onClose={continueAfterLevel}>
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
-              Nivel {currentLevel?.key} completado
-            </h2>
-            {currentLevel?.resumen?.logros &&
-              currentLevel.resumen.logros.length > 0 && (
-                <p className="text-base text-gray-700">
-                  Logros obtenidos: {currentLevel.resumen.logros.join(", ")}
-                </p>
-              )}
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">Nivel {currentLevel?.key} completado</h2>
+            {currentLevel?.resumen?.logros && Array.isArray(currentLevel.resumen.logros) && (
+              <p className="text-base text-gray-700">Logros obtenidos: {currentLevel.resumen.logros.join(", ")}</p>
+            )}
             {currentLevel?.resumen?.proximo_nivel && (
-              <p className="mt-1 text-base text-gray-700">
-                Próximo nivel: {currentLevel.resumen.proximo_nivel}
-              </p>
+              <p className="mt-1 text-base text-gray-700">Próximo nivel: {currentLevel.resumen.proximo_nivel}</p>
             )}
             <button
               className="mt-6 px-5 py-2 rounded-lg bg-indigo-600 text-white font-semibold shadow hover:bg-indigo-700"
@@ -578,12 +469,8 @@ export default function Game() {
         {/* Modal de retroalimentación para incorrectas */}
         {retroModal?.show && (
           <CenterModal onClose={closeRetro}>
-            <h3 className="text-xl font-bold text-rose-700">
-              Retroalimentación
-            </h3>
-            <p className="mt-3 text-base text-gray-800 whitespace-pre-line">
-              {retroModal.text}
-            </p>
+            <h3 className="text-xl font-bold text-rose-700">Retroalimentación</h3>
+            <p className="mt-3 text-base text-gray-800 whitespace-pre-line">{retroModal.text}</p>
             <div className="mt-5 flex justify-end">
               <button
                 className="px-5 py-2 rounded-lg bg-rose-600 text-white font-semibold shadow hover:bg-rose-700"

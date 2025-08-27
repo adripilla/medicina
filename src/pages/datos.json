@@ -1,10 +1,12 @@
 {
+  "titulo_juego": "NEURORESCUE: DESAFÍO AUTÓNOMO",
   "nivel_1": {
-    "contexto": "Es tu primer día como residente en el Hospital General. Tu mentora, la Dra. Jessica, te enviará pacientes con síntomas leves para familiarizarte con los casos.",
+    "contexto": "Es tu primer día como residente en el Hospital General. La recepción coordina los ingresos y la Dra. Jessica revisa los casos.",
     "casos": {
       "1": {
+        "sistema": "Ojos",
         "preguntas": {
-          "introduccion": "Un joven de 22 años llega a urgencias tras un accidente leve en bicicleta. Está agitado y ve borroso de cerca. Presenta pupilas dilatadas (midriasis). La Dra. Jessica pregunta: ¿qué receptor está implicado principalmente en este efecto?",
+          "introduccion": "Buenos días, . Tenemos nuestro primer caso. Un joven de 22 años llega a urgencias tras un leve accidente de bicicleta. No tiene fracturas, pero se muy agitado y se queja de que ve borroso de cerca. Al examinarlo, noto que sus pupilas están notablemente dilatadas (midriasis). Esto seguramente es una respuesta adrenérgica por el susto del accidente. ¿Podría decirme qué receptor se implicado principalmente en este efecto?",
           "1": "Activación de receptores M3 en el músculo esfínter del iris",
           "2": "Activación de receptores β2 en el músculo ciliar",
           "3": "Activación de receptores α1 en el músculo radial del iris",
@@ -12,75 +14,97 @@
           "correcta": 3
         },
         "sintomas": [
-          "Midriasis",
-          "Visión borrosa de cerca",
-          "Agitación simpática"
+          "👁️ Midriasis (pupilas dilatadas)",
+          "👁️ Visión borrosa de cerca",
+          "😰 Agitación (activación simpática)"
         ],
         "retroalimentacion": {
-          "acierto": "¡Exacto! El músculo radial del iris (dilatador) se contrae con la noradrenalina actuando sobre receptores α1, provocando midriasis. La visión borrosa de cerca es porque el músculo ciliar también está relajado. Buen ojo, doctor/a.",
-          "fallo": "Casi. Recordemos: la midriasis es simpática. Los receptores M3 causan miosis, no midriasis. El receptor correcto es α1 en el músculo radial."
+          "acierto": "¡Exacto! El músculo radial del iris (dilatador) se contrae con la noradrenalina actuando sobre receptores α1, provocando la midriasis. La visión borrosa de cerca se debe a que el músculo ciliar también está relajado. Buen ojo, doctor/a.",
+          "fallo": "Casi. Recordemos: la midriasis es una respuesta simpática. Los receptores M3 parasimpáticos causan miosis, no midriasis. El receptor correcto es α1 en el músculo radial."
         },
         "recompensa": {
-          "puntos": 10,
+          "PK": 10,
           "logro": "Primeros Pasos en Oftalmología"
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Ojos. Paciente listo para valoración. Resumen: Buenos días, doctor/a. Tenemos nuestro primer caso. Un joven de 22 años llega a urgencias tras un leve accidente de bicicleta. No tiene fracturas, pero está muy agitado y se queja de que ve borroso de cerca. Al examinarlo, noto que sus pupilas están notablemente dilatadas (midriasis). Esto seguramente es una respuesta adrenérgica por el susto del accidente.",
+          "doctora": "¿Podría decirme qué receptor está implicado principalmente en este efecto?"
         }
       },
       "2": {
+        "sistema": "Cardiovascular (Corazón)",
         "preguntas": {
-          "introduccion": "Paciente de 30 años con crisis de ansiedad. Presenta taquicardia (FC: 120 lpm) y presión arterial elevada. La Dra. Jessica pregunta: ¿qué receptor cardíaco aumenta la frecuencia cardíaca?",
+          "introduccion": "Muy bien. Ahora tenemos a una paciente de 30 años que acaba de sufrir una crisis de ansiedad. Sus signos vitales muestran taquicardia (FC: 120 lpm) y presión arterial elevada. Esto es clásico de una descarga simpática. ¿Qué receptor cardiaco es el principal responsable de aumentar la frecuencia cardíaca?",
           "1": "Bloqueo de receptores β1 en el nodo sinusal",
           "2": "Activación de receptores β1 en el nodo sinusal",
-          "3": "Activación de receptores M2 en el nodo AV",
-          "4": "Activación de receptores α1 en arterias coronarias",
+          "3": "Activación de receptores M2 en el nodo auriculoventricular",
+          "4": "Activación de receptores α1 en las arterias coronarias",
           "correcta": 2
         },
-        "sintomas": ["Taquicardia", "Hipertensión", "Ansiedad simpática"],
+        "sintomas": [
+          "💓 Taquicardia (FC: 120 lpm)",
+          "📈 Presión arterial elevada",
+          "😥 Crisis de ansiedad (activación simpática)"
+        ],
         "retroalimentacion": {
-          "acierto": "¡Correcto! Los receptores β1 en el nodo SA aumentan la frecuencia cardíaca (cronotropía) en la respuesta de lucha o huida.",
-          "fallo": "Repasemos: los M2 enlentecen el corazón (parasimpático). Los α1 no regulan la frecuencia. La respuesta es β1 en el nodo sinusal."
+          "acierto": "¡Correcto! Los receptores β1 en el nodo sinusal (SA) son los encargados de aumentar la frecuencia cardíaca (cronotropía) durante la respuesta de lucha o huida. Está aprendiendo rápido.",
+          "fallo": "Vamos a repasar. Los receptores M2 son parasimpáticos y enlentecen el corazón. Los α1 no son los principales en el corazón para la frecuencia. La respuesta es β1 en el nodo sinusal."
         },
         "recompensa": {
-          "puntos": 10,
+          "PK": 10,
           "powerup": "Farmacología Express (1 uso gratis)"
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Cardiovascular (Corazón). Paciente listo para valoración. Resumen: Muy bien. Ahora tenemos a una paciente de 30 años que acaba de sufrir una crisis de ansiedad. Sus signos vitales muestran taquicardia (FC: 120 lpm) y presión arterial elevada. Esto es clásico de una descarga simpática.",
+          "doctora": "¿Qué receptor cardiaco es el principal responsable de aumentar la frecuencia cardíaca?"
         }
       },
       "3": {
+        "sistema": "Glándulas exocrinas",
         "preguntas": {
-          "introduccion": "Un hombre de 50 años en control médico refiere boca seca (xerostomía) como efecto secundario de su medicamento. La Dra. Jessica pregunta: ¿qué receptor está bloqueando este fármaco?",
-          "1": "Bloqueo de receptores α1 en glándulas salivales",
-          "2": "Activación de receptores β2 en acinos pancreáticos",
-          "3": "Bloqueo de receptores M3 en glándulas salivales",
-          "4": "Activación de receptores α2 en terminaciones nerviosas",
+          "introduccion": "Último caso de la jornada. Un hombre de 50 años viene por un control. Está tomando un nuevo medicamento para los espasmos intestinales y menciona como efecto secundario que siente la boca extremadamente seca (xerostomía). ¿Qué tipo de receptor crees que se bloqueando su medicación para causar este efecto?",
+          "1": "Bloqueo de receptores α1 en las glándulas salivales",
+          "2": "Activación de receptores β2 en los acinos pancreáticos",
+          "3": "Bloqueo de receptores M3 en las glándulas salivales",
+          "4": "Activación de receptores α2 en las terminaciones nerviosas",
           "correcta": 3
         },
-        "sintomas": ["Xerostomía", "Efecto anticolinérgico"],
+        "sintomas": [
+          "👄 Boca seca (xerostomía)",
+          "💊 Efecto secundario de medicamento anticolinérgico"
+        ],
         "retroalimentacion": {
-          "acierto": "¡Así es! Los receptores M3 estimulan la secreción de saliva. Su bloqueo (efecto anticolinérgico) causa sequedad de boca.",
-          "fallo": "Casi. Las glándulas salivales están controladas por receptores M3 parasimpáticos. La sequedad se debe a su bloqueo."
+          "acierto": "¡Así es! Los receptores muscarínicos M3 son los responsables de estimular la secreción de saliva. Si un fármaco los bloquea (efecto anticolinérgico), causa sequedad de boca. Diagnóstico perfecto.",
+          "fallo": "Casi. Las glándulas salivales están principalmente controladas por el sistema parasimpático a través de receptores M3. La sequedad es por bloqueo de estos receptores, no por activación de otros."
         },
         "recompensa": {
-          "puntos": 15,
+          "PK": 15,
           "logro": "Diagnóstico en Seco",
-          "powerup": "Rayos X del SNA (elimina 2 respuestas incorrectas por 5 PK)"
+          "powerup_permanente": "Rayos X del SNA (elimina 2 respuestas incorrectas por 5 PK)"
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Glándulas exocrinas. Paciente listo para valoración. Resumen: Último caso de la jornada. Un hombre de 50 años viene por un control. Está tomando un nuevo medicamento para los espasmos intestinales y menciona como efecto secundario que siente la boca extremadamente seca (xerostomía).",
+          "doctora": "¿Qué tipo de receptor crees que está bloqueando su medicación para causar este efecto?"
         }
       }
     },
     "resumen": {
-      "puntos_totales": 35,
+      "PK_total_nivel": 35,
       "powerups": [
         "Farmacología Express (1 uso)",
         "Rayos X del SNA (disponible)"
       ],
-      "logros": ["Primeros Pasos en Oftalmología", "Diagnóstico en Seco"],
-      "proximo_nivel": "Nivel 2 (Moderado) - Casos multisistémicos"
+      "logros": "2/50",
+      "proximo_nivel": "Nivel 2 (Moderado)"
     }
   },
   "nivel_2": {
-    "contexto": "Tu desempeño en los casos simples ha impresionado a la Dra. Jessica. Ahora te enviará pacientes con síntomas más sutiles o que involucran más de un sistema. ¡Veamos cómo te va!",
+    "contexto": "La recepción reporta casos de mayor complejidad y la Dra. Jessica supervisa. Ahora te enviará pacientes con síntomas más sutiles o que involucran más de un sistema. ¡Veamos cómo te va!",
     "casos": {
       "4": {
+        "sistema": "Cardiovascular y Renal",
         "preguntas": {
-          "introduccion": "Paciente hipertenso de 60 años en tratamiento con bloqueante adrenérgico. Presenta hipotensión ortostática y bradicardia leve. La Dra. Jessica pregunta: ¿qué receptor está bloqueando principalmente?",
+          "introduccion": "necesito su ayuda con un caso interesante. Tenemos a un paciente hipertenso de 60 años que se siendo tratado con un nuevo bloqueante adrenérgico. Desde que empezó el tratamiento, reporta mareos al ponerse de pie (hipotensión ortostática) y su frecuencia cardíaca en reposo es de 55 lpm (ligera bradicardia). El fármaco que toma es de acción predominantemente periférica. ¿Qué receptor creemos que se bloqueando?",
           "1": "Bloqueo de receptores β2 en el músculo esquelético",
           "2": "Bloqueo de receptores α1 en vasos sanguíneos",
           "3": "Bloqueo de receptores M3 en el corazón",
@@ -88,40 +112,54 @@
           "correcta": 2
         },
         "sintomas": [
-          "Hipotensión ortostática",
-          "Bradicardia leve",
-          "Uso de bloqueante adrenérgico"
+          "💫 Hipotensión ortostática (mareos al ponerse de pie)",
+          "💓 Bradicardia leve (FC: 55 lpm)",
+          "💊 Tratamiento con bloqueante adrenérgico"
         ],
         "retroalimentacion": {
-          "acierto": "¡Brillante! El bloqueo de receptores α1 impide la vasoconstricción necesaria para mantener la presión al ponerse de pie. La bradicardia puede ser reflejo o leve acción β1.",
-          "fallo": "Los mareos posturales apuntan a un problema vascular, no cardiaco puro. La clave es el bloqueo α1 en los vasos."
+          "acierto": "¡Brillante! Efectivamente, el bloqueo de los receptores α1 vasculares impide la vasoconstricción, causando hipotensión ortostática. La bradicardia puede ser un efecto secundario o reflejo. Estás pensando como un experto.",
+          "fallo": "Pensémoslo de nuevo. Los mareos al ponerse de pie apuntan a un problema vascular, no cardiaco puro. El bloqueo de β2 o M3 no causa esto de manera primaria. La clave es el bloqueo α1 en los vasos."
         },
         "recompensa": {
-          "puntos": 15
+          "PK": 15
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Cardiovascular y Renal. Paciente listo para valoración. Resumen: Doctor/a, necesito su ayuda con un caso interesante. Tenemos a un paciente hipertenso de 60 años que está siendo tratado con un nuevo bloqueante adrenérgico. Desde que empezó el tratamiento, reporta mareos al ponerse de pie (hipotensión ortostática) y su frecuencia cardíaca en reposo es de 55 lpm (ligera bradicardia). El fármaco que toma es de acción predominantemente periférica.",
+          "doctora": "¿Qué receptor creemos que está bloqueando?"
         }
       },
       "5": {
+        "sistema": "Pulmonar y Muscular",
         "preguntas": {
-          "introduccion": "Adolescente asmático en crisis aguda sin inhalador. Presenta disnea, sibilancias y uso de músculos accesorios. La Dra. Jessica pregunta: ¿qué receptor debemos activar prioritariamente?",
-          "1": "Activación de receptores α1 en bronquios",
-          "2": "Activación de receptores β2 en músculo liso bronquial",
-          "3": "Activación de receptores M3 en glándulas bronquiales",
-          "4": "Bloqueo de receptores M2 en terminales nerviosos",
+          "introduccion": "Tenemos una emergencia en la sala de espera. Un adolescente con asma conocida olvidó su inhalador y se teniendo una crisis. Presenta disnea severa (dificultad para respirar), sibilancias audibles y se usando los músculos accesorios para respirar. Para aliviarlo rápidamente, necesitamos relajar su músculo liso bronquial. ¿Qué receptor debemos activar de forma prioritaria?",
+          "1": "Activación de receptores α1 en los bronquios",
+          "2": "Activación de receptores β2 en el músculo liso bronquial",
+          "3": "Activación de receptores M3 en las glándulas bronquiales",
+          "4": "Bloqueo de receptores M2 en los terminales nerviosos",
           "correcta": 2
         },
-        "sintomas": ["Disnea severa", "Sibilancias", "Historia de asma"],
+        "sintomas": [
+          "😮‍💨 Disnea severa",
+          "🔊 Sibilancias (broncoconstricción)",
+          "🏃‍♂️ Historia de asma"
+        ],
         "retroalimentacion": {
-          "acierto": "¡Excelente! Activando receptores β2 logramos broncodilatación rápida, el mismo efecto de los inhaladores de rescate.",
-          "fallo": "Activar α1 o M3 empeoraría la broncoconstricción. La respuesta es activar receptores β2 para broncodilatación."
+          "acierto": "¡Excelente! Activando los receptores β2 conseguimos una broncodilatación rápida y salvamos la vida a este chico. Es justo el mecanismo de su inhalador de rescate. Decisiones precisas bajo presión.",
+          "fallo": "Casi. Activar α1 o M3 empeoraría la contracción del músculo liso. La respuesta de emergencia es la activación de los receptores β2 para lograr la broncodilatación."
         },
         "recompensa": {
-          "puntos": 15,
+          "PK": 15,
           "powerup": "Tutor Virtual (1 uso gratis)"
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Pulmonar y Muscular. Paciente listo para valoración. Resumen: Tenemos una emergencia en la sala de espera. Un adolescente con asma conocida olvidó su inhalador y está teniendo una crisis. Presenta disnea severa (dificultad para respirar), sibilancias audibles y está usando los músculos accesorios para respirar. Para aliviarlo rápidamente, necesitamos relajar su músculo liso bronquial.",
+          "doctora": "¿Qué receptor debemos activar de forma prioritaria?"
         }
       },
       "6": {
+        "sistema": "Gastrointestinal y Glandular (Jefe de nivel)",
         "preguntas": {
-          "introduccion": "Paciente hallado en un invernadero con vómitos, diarrea, lagrimeo, salivación excesiva y miosis intensa. La Dra. Jessica pregunta: ¿cuál es el mecanismo fisiopatológico subyacente?",
+          "introduccion": "este es el caso más desafiante del turno. Un paciente fue encontrado confundido en un invernadero. Presenta vómitos, dolor abdominal cólico, diarrea profusa, lagrimeo constante y salivación excesiva (sialorrea). Sus pupilas están puntiformes (miosis intensa). Todo apunta a una intoxicación. ¿Cuál es el mecanismo fisiopatológico subyacente?",
           "1": "Bloqueo masivo de receptores adrenérgicos α y β",
           "2": "Activación masiva de receptores colinérgicos muscarínicos M2 y M3",
           "3": "Bloqueo masivo de receptores colinérgicos nicotínicos",
@@ -129,44 +167,45 @@
           "correcta": 2
         },
         "sintomas": [
-          "Vómitos y diarrea",
-          "Lagrimeo",
-          "Sialorrea",
-          "Miosis intensa",
-          "Confusión"
+          "🤢 Vómitos, dolor abdominal, diarrea",
+          "😭 Lagrimeo",
+          "👄 Salivación excesiva (sialorrea)",
+          "👁️ Miosis intensa",
+          "🧠 Confusión"
         ],
         "retroalimentacion": {
-          "acierto": "¡Diagnóstico espectacular! Es una intoxicación colinérgica por organofosforados. Atropina es el antídoto.",
-          "fallo": "Secreciones excesivas y miosis son signos parasimpaticomiméticos. La clave es la activación masiva de receptores muscarínicos M2 y M3."
+          "acierto": "¡Diagnóstico espectacular! Ha identificado correctamente una intoxicación colinérgica por activación masiva de receptores muscarínicos. La atropina (antagonista muscarínico) es el antídoto. Estás listo/a para lo que sea.",
+          "fallo": "Es un caso complejo. Revisemos los síntomas: secreciones excesivas y miosis son signos parasimpaticomiméticos, no de bloqueo ni de activación adrenérgica. La clave es la activación masiva de los receptores M3 y M2."
         },
         "recompensa": {
-          "puntos": 25,
+          "PK": 25,
           "logro": "Toxicólogo en Formación",
-          "powerup": "Tutor Virtual con descuento (12 PK en lugar de 15)"
+          "powerup_permanente": "Tutor Virtual con descuento (12 PK)"
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Gastrointestinal y Glandular (Jefe de nivel). Paciente listo para valoración. Resumen: Doctor/a, este es el caso más desafiante del turno. Un paciente fue encontrado confundido en un invernadero. Presenta vómitos, dolor abdominal cólico, diarrea profusa, lagrimeo constante y salivación excesiva (sialorrea). Sus pupilas están puntiformes (miosis intensa). Todo apunta a una intoxicación.",
+          "doctora": "¿Cuál es el mecanismo fisiopatológico subyacente?"
         }
       }
     },
     "resumen": {
-      "puntos_totales": 55,
+      "PK_total_nivel": 55,
       "powerups": [
         "Farmacología Express (1)",
         "Rayos X del SNA",
         "Tutor Virtual (1 uso gratis)"
       ],
-      "logros": [
-        "Primeros Pasos en Oftalmología",
-        "Diagnóstico en Seco",
-        "Toxicólogo en Formación"
-      ],
-      "proximo_nivel": "Nivel 3 (Difícil) - Casos multisistémicos e interacciones farmacológicas"
+      "logros": "3/50",
+      "proximo_nivel": "Nivel 3 (Difícil)"
     }
   },
   "nivel_3": {
-    "contexto": "La Dra. Jessica está impresionada con tu razonamiento clínico. ¡Los casos fáciles se acabaron! Ahora veremos cómo te va con pacientes que no leen los libros de texto. Sus síntomas se solaparán y tus decisiones tendrán consecuencias.",
+    "contexto": "La recepción y la Dra. Jessica presentan casos complejos con síntomas solapados y decisiones con consecuencias.",
     "casos": {
       "7": {
+        "sistema": "Cardiovascular + Metabólico",
         "preguntas": {
-          "introduccion": "Deportista de 25 años tras competición. Presenta taquicardia, hiperglucemia y sudoración profusa. La Dra. Jessica pregunta: ¿qué receptores están trabajando horas extras?",
+          "introduccion": "¡Boom! Primer caso del turno. Deportista de 25 años. Llega tras una competición. Está ansioso, con taquicardia (110 lpm), y en su analítica destaca una glucosa en sangre de 250 mg/dL (hiperglucemia) a pesar de no ser diabético. Su sudoración es profusa. ¿Qué dos receptores están trabajando horas extras para causar este combo de síntomas?",
           "1": "Activación de α1 (vasos) y β3 (grasa)",
           "2": "Activación de β1 (corazón) y α1/β2 (hígado)",
           "3": "Activación de M3 (glándulas) y M2 (corazón)",
@@ -174,22 +213,27 @@
           "correcta": 2
         },
         "sintomas": [
-          "Taquicardia (110 lpm)",
-          "Hiperglucemia (250 mg/dL)",
-          "Sudoración profusa",
-          "Ansiedad simpática"
+          "💓 Taquicardia (110 lpm)",
+          "📊 Hiperglucemia (250 mg/dL)",
+          "💦 Sudoración profusa",
+          "😰 Ansiedad (activación simpática)"
         ],
         "retroalimentacion": {
-          "acierto": "¡Le diste al clavo! β1 para el corazón y α1/β2 para liberar glucosa del hígado. Respuesta de lucha o huida en estado puro.",
-          "fallo": "La sudoración es adrenérgica (α1), no colinérgica (M3). Y la hiperglucemia viene del hígado (α1/β2), no de la grasa (β3)."
+          "acierto": "¡Le diste al clavo! β1 para el motor cardiaco y el combo α1/β2 para liberar glucosa a la sangre y dar energía. Es la respuesta de 'lucha o huida' en estado puro. ¡Sigue así!",
+          "fallo": "Casi, pero no. La sudoración es adrenérgica (α1), no colinérgica (M3). Y la hiperglucemia viene del hígado (α1/β2), no de la grasa (β3). La respuesta es B."
         },
         "recompensa": {
-          "puntos": 20
+          "PK": 20
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Cardiovascular + Metabólico. Paciente listo para valoración. Resumen: ¡Boom! Primer caso del turno. Deportista de 25 años. Llega tras una competición. Está ansioso, con taquicardia (110 lpm), y en su analítica destaca una glucosa en sangre de 250 mg/dL (hiperglucemia) a pesar de no ser diabético. Su sudoración es profusa.",
+          "doctora": "¿Qué dos receptores están trabajando horas extras para causar este combo de síntomas?"
         }
       },
       "8": {
+        "sistema": "Urinario + Cardiovascular (Interacción farmacológica)",
         "preguntas": {
-          "introduccion": "Paciente de 70 años con HTA e hiperplasia prostática. Usa bloqueante α1 y presenta hipotensión (90/60) con mareo. La Dra. Jessica pregunta: ¿por qué el mismo fármaco que le ayuda, ahora le perjudica?",
+          "introduccion": "¡Vaya lío! Paciente de 70 años con hipertensión e hiperplasia prostática. Toma un fármaco bloqueante α1 para ambos problemas. Hoy viene porque se siente mareado. Al medirle la presión, está 90/60 mmHg (hipotensión). Su frecuencia cardíaca es normal. ¿Por qué el mismo fármaco que le ayuda, ahora le perjudica?",
           "1": "El bloqueo de α1 vasculares causa vasodilatación e hipotensión",
           "2": "El fármaco activa los receptores β2 en su lugar",
           "3": "El bloqueo de α1 prostáticos afecta secundariamente al corazón",
@@ -197,134 +241,156 @@
           "correcta": 1
         },
         "sintomas": [
-          "Hipotensión (90/60 mmHg)",
-          "Mareo",
-          "Tratamiento con bloqueante α1"
+          "💫 Hipotensión (90/60 mmHg)",
+          "😵 Mareo",
+          "💊 Toma un bloqueante α1 (ej: Doxazosina)"
         ],
         "retroalimentacion": {
-          "acierto": "¡Exacto! El mismo mecanismo que relaja la próstata (α1) relaja los vasos (α1), causando hipotensión.",
-          "fallo": "Los bloqueantes α1 no activan β2 ni son anticolinérgicos. Su efecto principal es vasodilatación por bloqueo α1."
+          "acierto": "¡Exacto! Es un efecto secundario clásico. El mismo mecanismo que relaja la próstata (α1), relaja los vasos (α1) y la presión se cae. La dosis debe reajustarse. ¡Gran manejo de efectos adversos!",
+          "fallo": "Revisemos. Los bloqueantes α1 no activan β2 ni son anticolinérgicos. Su efecto primario es bloquear los receptores α1 en TODO el cuerpo, incluyendo los vasos, causando hipotensión. La respuesta es A."
         },
         "recompensa": {
-          "puntos": 20,
+          "PK": 20,
           "powerup": "Se recarga 1 uso de Farmacología Express"
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Urinario + Cardiovascular (Interacción farmacológica). Paciente listo para valoración. Resumen: ¡Vaya lío! Paciente de 70 años con hipertensión e hiperplasia prostática. Toma un fármaco bloqueante α1 para ambos problemas. Hoy viene porque se siente mareado. Al medirle la presión, está 90/60 mmHg (hipotensión). Su frecuencia cardíaca es normal.",
+          "doctora": "¿Por qué el mismo fármaco que le ayuda, ahora le perjudica?"
         }
       },
       "9": {
+        "sistema": "Multisistémico (Jefe de nivel)",
         "preguntas": {
-          "introduccion": "Paciente en shock séptico con hipotensión severa (70/40), piel fría y anuria. No responde a fluidos. La Dra. Jessica pregunta: ¿qué receptor debemos activar prioritariamente para salvarle la vida?",
+          "introduccion": "¡Alerta de código rojo! Paciente en la UCI con shock séptico. Tiene hipotensión severa (70/40 mmHg) que no responde a fluidos. También presenta piel fría y pálida y anuria (no produce orina). Para salvarle la vida, necesitamos usar un fármaco vasoactivo. ¿Qué receptor debemos activar de forma prioritaria para aumentar su presión arterial y perfundir sus órganos vitales?",
           "1": "Activación de receptores β2 en vasos musculares",
           "2": "Activación de receptores α1 en vasos sanguíneos",
-          "3": "Activación de receptores M3 en endotelio",
+          "3": "Activación de receptores M3 en el endotelio",
           "4": "Activación de receptores β1 en el corazón",
           "correcta": 2
         },
         "sintomas": [
-          "Hipotensión severa (70/40)",
-          "Piel fría y pálida",
-          "Anuria",
-          "Shock séptico"
+          "⚠️ Hipotensión severa (70/40 mmHg)",
+          "🥶 Piel fría y pálida",
+          "🚫 Anuria",
+          "🦠 Shock séptico"
         ],
         "retroalimentacion": {
-          "acierto": "¡SÍ! α1 es la clave. Necesitamos vasoconstricción para subir la presión. Noradrenalina es la primera elección.",
-          "fallo": "En shock séptico se necesita vasoconstricción. β2 dilataría más, β1 solo aumenta frecuencia sin resolver el problema."
+          "acierto": "¡SÍ! α1 es la clave. Necesitamos vasoconstricción pura y dura para contraer esos vasos dilatados y subir la presión. La noradrenalina es nuestra mejor amiga aquí. Decisión correcta bajo presión extrema.",
+          "fallo": "En una emergencia así, necesitamos actuar sobre los vasos. Activar β2 los dilataría más, empeorando todo. β1 aumentaría el corazón pero no resolvería la vasodilatación. La respuesta correcta era B, activar α1 para vasoconstricción."
         },
         "recompensa": {
-          "puntos": 30,
+          "PK": 30,
           "logro": "Maestro de las Catecolaminas",
-          "powerup": "Visión de Jefe (permanente)"
+          "powerup_permanente": "Visión de Jefe"
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Multisistémico (Jefe de nivel). Paciente listo para valoración. Resumen: ¡Alerta de código rojo! Paciente en la UCI con shock séptico. Tiene hipotensión severa (70/40 mmHg) que no responde a fluidos. También presenta piel fría y pálida y anuria (no produce orina).",
+          "doctora": "¿Qué receptor debemos activar de forma prioritaria para aumentar su presión arterial y perfundir sus órganos vitales?"
         }
       }
     },
     "resumen": {
-      "puntos_totales": 70,
+      "PK_total_nivel": 70,
       "powerups": [
         "Farmacología Express (2)",
         "Rayos X del SNA",
         "Tutor Virtual (1)",
         "Visión de Jefe"
       ],
-      "logros": [
-        "Primeros Pasos en Oftalmología",
-        "Diagnóstico en Seco",
-        "Toxicólogo en Formación",
-        "Maestro de las Catecolaminas"
-      ],
-      "proximo_nivel": "Nivel 4 (Experto) - Casos raros y efectos paradójicos"
+      "logros": "4/50",
+      "proximo_nivel": "Nivel 4 (Experto)"
     }
   },
   "nivel_4": {
-    "contexto": "Bienvenido al lado salvaje de la farmacología y la fisiología. La Dra. Jessica te presentará casos con efectos paradójicos, reacciones idiosincrásicas y diagnósticos complejos que pondrán a prueba todo lo que crees saber.",
+    "contexto": "La recepción y la Dra. Jessica presentarán efectos paradójicos, reacciones idiosincrásicas y diagnósticos complejos.",
     "casos": {
       "10": {
+        "sistema": "Paradoja cardiovascular",
         "preguntas": {
-          "introduccion": "Paciente con glaucoma en tratamiento con Timolol (bloqueante β no selectivo). Presenta bradicardia (50 lpm) y mareo ortostático. ¿Cómo explica que un β-bloqueador afecte también la presión al ponerse de pie?",
+          "introduccion": "Paciente con glaucoma en tratamiento con gotas de Timolol (un bloqueante β no selectivo). Sin embargo, hoy se queja de que su frecuencia cardíaca en reposo ha bajado a 50 lpm (bradicardia marcada), pero también dice sentirse mareado al levantarse. ¿Cómo explica que un bloqueante β, que debería principalmente afectar al corazón, le esté causando también hipotensión ortostática?",
           "1": "El Timolol bloquea receptores M2 además de los β",
-          "2": "El bloqueo de receptores β2 vasculares impide la vasodilatación compensatoria necesaria al ponerse de pie",
+          "2": "El bloqueo de los receptores β2 vasculares impide la vasodilatación compensatoria necesaria al ponerse de pie",
           "3": "El paciente tiene una sensibilidad idiosincrásica a todos los bloqueantes",
-          "4": "El Timolol activa secundariamente receptores α2 causando hipotensión",
-          "correcta": 2
-        },
-        "sintomas": ["Bradicardia (50 lpm)", "Mareo ortostático"],
-        "retroalimentacion": {
-          "acierto": "¡Lo lograste! Bloquear β2 vasculares puede romper el equilibrio fino de la presión arterial. Pensamiento de alto nivel.",
-          "fallo": "La clave está en que 'no selectivo' significa que también bloquea β2, y eso puede causar hipotensión ortostática."
-        },
-        "recompensa": {
-          "puntos": 25
-        }
-      },
-      "11": {
-        "preguntas": {
-          "introduccion": "Paciente con sobredosis de Clonidina (agonista α2). Presenta hipertensión severa transitoria antes de hipotensión. ¿Cómo se explica esta paradoja?",
-          "1": "La Clonidina se convierte en antagonista α1 a dosis altas",
-          "2": "A dosis muy altas estimula α2 presinápticos y también α1 postsinápticos causando vasoconstricción",
-          "3": "La sobredosis agota catecolaminas causando rebote",
-          "4": "La Clonidina tiene metabolitos agonistas β1",
+          "4": "El Timolol activa secundariamente receptores α2, causando hipotensión",
           "correcta": 2
         },
         "sintomas": [
-          "Sobredosis de Clonidina",
-          "Hipertensión severa transitoria"
+          "💓 Bradicardia (50 lpm) - Efecto cardíaco esperado del β-bloqueo",
+          "💫 Mareo ortostático (Hipotensión)"
         ],
         "retroalimentacion": {
-          "acierto": "¡Exacto! A dosis tóxicas, la Clonidina pierde selectividad y activa α1 periféricos causando vasoconstricción.",
-          "fallo": "El fenómeno es la pérdida de selectividad: en sobredosis también activa α1 postsinápticos, elevando la presión."
+          "acierto": "¡Lo lograste! Es un efecto sutil pero real. No todo es β1 en el corazón. Bloquear β2 vasculares puede romper el equilibrio fino de la presión arterial. Pensamiento de alto nivel.",
+          "fallo": "Trampa difícil. Los β-bloqueadores no afectan receptores muscarínicos o α2 de forma primaria. La clave es que 'no selectivo' significa que también bloquea β2 y eso puede tener consecuencias vasculares inesperadas. La respuesta era B."
         },
         "recompensa": {
-          "puntos": 25,
+          "PK": 25
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Paradoja cardiovascular. Paciente listo para valoración. Resumen: Paciente con glaucoma en tratamiento con gotas de Timolol (un bloqueante β no selectivo). Sin embargo, hoy se queja de que su frecuencia cardíaca en reposo ha bajado a 50 lpm (bradicardia marcada), pero también dice sentirse mareado al levantarse.",
+          "doctora": "¿Cómo explica que un bloqueante β, que debería principalmente afectar al corazón, le esté causando también hipotensión ortostática?"
+        }
+      },
+      "11": {
+        "sistema": "El fármaco camaleón",
+        "preguntas": {
+          "introduccion": "Un fármaco muy usado, la Clonidina, es un agonista α2. Se prescribe para la hipertensión. Sin embargo, en una sobredosis masiva, puede causar hipertensión severa transitoria antes de colapsar la presión. ¿Cómo se explica esta paradoja?",
+          "1": "La Clonidina se convierte en un antagonista α1 a dosis altas",
+          "2": "A dosis muy altas, estimula los receptores α2 presinápticos y también los postsinápticos α1, causando vasoconstricción",
+          "3": "La sobredosis agota las catecolaminas, causando rebote",
+          "4": "La Clonidina tiene metabolitos que son agonistas β1",
+          "correcta": 2
+        },
+        "sintomas": [
+          "💊 Sobredosis de Clonidina (agonista α2)",
+          "📈 Hipertensión severa transitoria"
+        ],
+        "retroalimentacion": {
+          "acierto": "¡Increíble! Captaste la nuance de la dosis y la pérdida de selectividad. De agonista α2 central a agonista α1 periférico. Este nivel de detalle marca la diferencia.",
+          "fallo": "Es un concepto avanzado. A dosis normales, la Clonidina baja la presión. A dosis tóxicas, pierde selectividad y activa α1, constriñendo los vasos. La respuesta era B."
+        },
+        "recompensa": {
+          "PK": 25,
           "powerup": "El Camaleón (1 uso)"
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en El fármaco camaleón. Paciente listo para valoración. Resumen: Un fármaco muy usado, la Clonidina, es un agonista α2. Se prescribe para la hipertensión. Sin embargo, en una sobredosis masiva, puede causar hipertensión severa transitoria antes de colapsar la presión.",
+          "doctora": "¿Cómo se explica esta paradoja?"
         }
       },
       "12": {
+        "sistema": "Jefe final: efecto rebote",
         "preguntas": {
-          "introduccion": "Paciente joven suspende bruscamente un bloqueante α1 crónico. Llega con taquicardia severa, cefalea pulsátil y crisis hipertensiva. ¿Qué fenómeno está ocurriendo?",
-          "1": "Infección viral coincidente que afecta el SNA",
+          "introduccion": "Último caso. Paciente joven tratado con un bloqueante α1 muy selectivo para una condición urológica. Decide suspender su medicación de golpe. A las 48 horas, llega a urgencias con taquicardia severa, dolor de cabeza pulsátil y una crisis hipertensiva. ¿Qué fenómeno está ocurriendo?",
+          "1": "Una infección viral coincidente que afecta el SNA",
           "2": "Supersensibilidad por up-regulation de receptores α1 adrenérgicos",
           "3": "Activación masiva de receptores β2 por falta de antagonismo",
           "4": "El fármaco tenía un metabolito agonista β1 que ahora predomina",
           "correcta": 2
         },
         "sintomas": [
-          "Suspensión brusca de bloqueante α1",
-          "Taquicardia severa",
-          "Cefalea pulsátil",
-          "Crisis hipertensiva"
+          "💊 Suspensión brusca de bloqueante α1",
+          "💓 Taquicardia severa",
+          "🤕 Cefalea pulsátil",
+          "📈 Crisis hipertensiva (Rebote)"
         ],
         "retroalimentacion": {
-          "acierto": "¡Correcto! El bloqueo crónico produce up-regulation de receptores α1, causando rebote hipertensivo al suspender.",
-          "fallo": "La clave es la supersensibilidad: más receptores α1 disponibles → hiperrespuesta a la noradrenalina."
+          "acierto": "¡FENOMENAL! Diagnóstico exacto: up-regulation de receptores α1. Entiendes la farmacología a un nivel profundo. La suspensión brusca de muchos bloqueantes (α, β) puede causar este efecto rebote peligroso.",
+          "fallo": "Este es el jefe final por una razón. No es una infección ni un metabolito. Es un principio: bloqueo crónico → up-regulation → rebote al suspender. La respuesta correcta era B."
         },
         "recompensa": {
-          "puntos": 40,
+          "PK": 40,
           "logro": "Lord/Lady de los Receptores",
           "titulo": "Residente Jefe de Neurofarmacología",
-          "powerup": "Intuición de la Dra. Jessica (permanente)"
+          "powerup_permanente": "Intuición de la Dra. Jessica"
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Jefe final: efecto rebote. Paciente listo para valoración. Resumen: Último caso. Paciente joven tratado con un bloqueante α1 muy selectivo para una condición urológica. Decide suspender su medicación de golpe. A las 48 horas, llega a urgencias con taquicardia severa, dolor de cabeza pulsátil y una crisis hipertensiva.",
+          "doctora": "¿Qué fenómeno está ocurriendo?"
         }
       }
     },
     "resumen": {
-      "puntos_totales": 90,
+      "PK_total_nivel": 90,
       "powerups": [
         "Farmacología Express (2)",
         "Rayos X del SNA",
@@ -333,216 +399,114 @@
         "El Camaleón (1)",
         "Intuición de la Dra. Jessica"
       ],
-      "logros": [
-        "Primeros Pasos en Oftalmología",
-        "Diagnóstico en Seco",
-        "Toxicólogo en Formación",
-        "Maestro de las Catecolaminas",
-        "Lord/Lady de los Receptores"
-      ],
-      "titulo": "Residente Jefe de Neurofarmacología",
-      "proximo_nivel": "Nivel 5 (Leyenda) - Casos raros y de ciencia ficción"
+      "logros": "5/50",
+      "proximo_nivel": "Nivel 5 (Leyenda)"
     }
   },
-  "nivel": 5,
-  "titulo": "Leyenda",
-  "intro_animacion": "(La pantalla parpadea y se vuelve de un tono rojo oscuro. La música se vuelve tensa y épica. La Dra. Jessica aparece con una bata de laboratorio sobre su uniforme y una expresión de máxima seriedad).",
-  "intro_dialogo": {
-    "personaje": "Dra. Jessica",
-    "dialogo": "Bienvenido al Nivel 5: Leyenda. Aquí no hay margen de error. Los casos que verás desafían la lógica y ponen a prueba los límites de tu conocimiento. Son raros, son complejos y un mal diagnóstico tiene consecuencias. ¿Estás listo para convertirte en una leyenda?"
-  },
-  "contexto": "Has llegado al pináculo del entrenamiento. Estos casos están basados en síndromes raros, interacciones farmacológicas absurdas y presentaciones clínicas que parecen errores de guión de una serie médica.",
-  "casos": [
-    {
-      "id": 13,
-      "titulo": "La parálisis que no era",
-      "presentacion": {
-        "personaje": "Dra. Jessica",
-        "dialogo": "Paciente de 45 años, miasténico conocido, llega a urgencias con ptosis palpebral (párpado caído), dificultad para tragar y debilidad muscular generalizada que no responde a su medicación habitual. Sin embargo, al examinarlo con detenimiento, notas que sus pupilas están midriáticas y tiene taquicardia. ¿Qué error catastrófico podría estar ocurriendo?"
+  "nivel_5": {
+    "contexto": "Llegaste al pináculo del entrenamiento: síndromes raros, interacciones inusuales y presentaciones atípicas.",
+    "casos": {
+      "13": {
+        "titulo": "La parálisis que no era",
+        "preguntas": {
+          "introduccion": "Paciente de 45 años, miasténico conocido, llega a urgencias con ptosis palpebral, dificultad para tragar y debilidad muscular generalizada que no responde a su medicación habitual. Sin embargo, al examinarlo con detenimiento, notas que sus pupilas están midriáticas y tiene taquicardia. ¿Qué error catastrófico podría estar ocurriendo?",
+          "1": "Un raro virus que ataca solo los receptores nicotínicos",
+          "2": "Sobredosis de medicación anticolinesterasa (ej: Neostigmina), causando un bloqueo por despolarización y crisis colinérgica",
+          "3": "Un feocromocitoma concurrente que enmascara los síntomas",
+          "4": "Una reactivación inusual del virus de la polio",
+          "correcta": 2
+        },
+        "sintomas": [
+          "⬇️ Ptosis, disfagia, debilidad",
+          "👁️ Midriasis (paradoja)",
+          "💓 Taquicardia (paradoja)"
+        ],
+        "retroalimentacion": {
+          "acierto": "¡LO LOGRASTE! Diste en el clavo. Es la temida crisis colinérgica por sobredosis de piridostigmina. Parece una crisis miasténica pero las pupilas y el corazón delatan la sobrestimulación muscarínica inicial.",
+          "fallo": "Casi. Un feocromocitoma no causa ptosis. La paradoja de debilidad con signos de activación simpática apunta a intoxicación por su tratamiento. La respuesta era B."
+        },
+        "recompensa": {
+          "PK": 35
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en La parálisis que no era. Paciente listo para valoración. Resumen: Paciente de 45 años, miasténico conocido, llega a urgencias con ptosis palpebral, dificultad para tragar y debilidad muscular generalizada que no responde a su medicación habitual. Sin embargo, al examinarlo con detenimiento, notas que sus pupilas están midriáticas y tiene taquicardia.",
+          "doctora": "¿Qué error catastrófico podría estar ocurriendo?"
+        }
       },
-      "sintomas": [
-        "Ptosis, disfagia, debilidad (parece crisis miasténica)",
-        "Midriasis (paradoja: debería tener miosis por la debilidad)",
-        "Taquicardia (paradoja: el reposo debería predominar)"
-      ],
-      "opciones": {
-        "a": "Un raro virus que ataca solo los receptores nicotínicos.",
-        "b": "Sobredosis de medicación anticolinesterasa (ej: Neostigmina), causando un bloqueo por despolarización y crisis colinérgica.",
-        "c": "Un feocromocitoma concurrente que enmascara los síntomas.",
-        "d": "Una reactivación inusual del virus de la polio."
+      "14": {
+        "titulo": "El síndrome del fármaco vuelto loco",
+        "preguntas": {
+          "introduccion": "Hombre de 38 años, VIH+, en tratamiento con Ritonavir (inhibidor de la proteasa), ingresa por hipotensión severa y bradicardia sintomáticas que no responden a fluidos. Su medicación crónica incluye un betabloqueante para una miocardiopatía. Los niveles plasmáticos del betabloqueante están por las nubes. ¿Cuál es el mecanismo de esta interacción farmacológica letal?",
+          "1": "El Ritonavir es un agonista β-adrenérgico inverso",
+          "2": "El Ritonavir es un potente inhibidor del citocromo P450, elevando dramáticamente los niveles del betabloqueante",
+          "3": "El Ritonavir causa insuficiencia renal aguda, reduciendo la excreción del betabloqueante",
+          "4": "El Ritonavir se une a los receptores β1, potenciando el efecto del betabloqueante",
+          "correcta": 2
+        },
+        "sintomas": [
+          "💉 Tratamiento con Ritonavir y betabloqueante",
+          "⬇️ Hipotensión severa + Bradicardia",
+          "🧪 Niveles del betabloqueante extremadamente altos"
+        ],
+        "retroalimentacion": {
+          "acierto": "¡Increíble! Conoces tus interacciones farmacológicas. El Ritonavir inhibe el CYP450, transformando una dosis normal de betabloqueante en una sobredosis masiva.",
+          "fallo": "Interacción clásica del VIH: no es efecto directo sobre el receptor ni riñón. La clave es el hígado y el CYP450. La respuesta era B."
+        },
+        "recompensa": {
+          "PK": 35,
+          "powerup": {
+            "nombre": "Chequeo Enzimático",
+            "usos": 2,
+            "descripcion": "Revela el perfil de metabolización hepática de un fármaco implicado en el caso."
+          }
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en El síndrome del fármaco vuelto loco. Paciente listo para valoración. Resumen: Hombre de 38 años, VIH+, en tratamiento con Ritonavir (inhibidor de la proteasa), ingresa por hipotensión severa y bradicardia sintomáticas que no responden a fluidos. Su medicación crónica incluye un betabloqueante para una miocardiopatía. Los niveles plasmáticos del betabloqueante están por las nubes.",
+          "doctora": "¿Cuál es el mecanismo de esta interacción farmacológica letal?"
+        }
       },
-      "respuesta_correcta": "b",
-      "explicacion": "Los pacientes miasténicos toman anticolinesterásicos para aumentar ACh. Una sobredosis de estos fármacos satura la sinapsis, llevando a una despolarización persistente de los receptores nicotínicos que los inactiva (bloqueo por despolarización), imitando una crisis miasténica pero con signos de exceso de estimulación muscarínica inicial. La midriasis y taquicardia son pistas clave.",
-      "retroalimentacion": {
-        "acierto": "¡LO LOGRASTE! Diste en el clavo. Es la temida crisis colinérgica por sobredosis de piridostigmina. Parece una crisis miasténica pero las pupilas y el corazón delatan la sobreestimulación muscarínica inicial. Salvaste al paciente de recibir más dosis del fármaco que lo estaba envenenando. Leyenda.",
-        "fallo": "Casi. Pero un feocromocitoma no causa ptosis. La clave está en la paradoja: síntomas de debilidad con signos de activación simpática (midriasis, taquicardia). Eso apunta a una intoxicación por el mismo tratamiento. La respuesta era B."
-      },
-      "recompensa": {
-        "PK": 35
-      }
-    },
-    {
-      "id": 14,
-      "titulo": "El síndrome del fármaco vuelto loco",
-      "presentacion": {
-        "personaje": "Dra. Jessica",
-        "dialogo": "Hombre de 38 años, VIH+, en tratamiento con Ritonavir (inhibidor de la proteasa), ingresa por hipotensión severa y bradicardia sintomáticas que no responden a fluidos. Su medicación crónica incluye un betabloqueante para una miocardiopatía. Los niveles plasmáticos del betabloqueante están por las nubes. ¿Cuál es el mecanismo de esta interacción farmacológica letal?"
-      },
-      "sintomas": [
-        "Tratamiento con Ritonavir y betabloqueante",
-        "Hipotensión severa + bradicardia",
-        "Niveles del betabloqueante extremadamente altos"
-      ],
-      "opciones": {
-        "a": "El Ritonavir es un agonista β-adrenérgico inverso.",
-        "b": "El Ritonavir es un potente inhibidor del citocromo P450, elevando dramáticamente los niveles del betabloqueante.",
-        "c": "El Ritonavir causa insuficiencia renal aguda, reduciendo la excreción del betabloqueante.",
-        "d": "El Ritonavir se une a los receptores β1, potenciando el efecto del betabloqueante."
-      },
-      "respuesta_correcta": "b",
-      "explicacion": "El Ritonavir es un inhibidor notorio del sistema enzimático CYP450 (especialmente CYP3A4). Muchos betabloqueantes son sustratos de este sistema. El Ritonavir bloquea su metabolización, produciendo acumulación tóxica del betabloqueante y potenciación masiva de sus efectos.",
-      "retroalimentacion": {
-        "acierto": "¡Increíble! Conoces tus interacciones farmacológicas como la palma de tu mano. Efectivamente, el Ritonavir inhibe el CYP450, transformando una dosis normal de betabloqueante en una sobredosis masiva. Esto es medicina de alto nivel.",
-        "fallo": "Es una interacción clásica de la farmacología del VIH. No es un efecto directo sobre el receptor ni sobre el riñón. La clave está en el hígado y su sistema enzimático. El Ritonavir es un inhibidor enzimático famoso. La respuesta era B."
-      },
-      "recompensa": {
-        "PK": 35,
-        "powerup": {
-          "nombre": "Chequeo Enzimático",
-          "usos": 2,
-          "descripcion": "Revela el perfil de metabolización hepática de un fármaco implicado en el caso."
+      "15": {
+        "titulo": "Jefe final absoluto: el fantasma simpático",
+        "preguntas": {
+          "introduccion": "Paciente con tetraplejia completa por trauma cervical alto (C4). A pesar de su lesión, es traído de urgencia por hipertensión severa (220/130 mmHg), cefalea explosiva, rubor y diaforesis por encima del nivel de la lesión, y bradicardia. ¿Qué fenómeno mortal está ocurriendo y por qué es una urgencia extrema?",
+          "1": "Un accidente cerebrovascular hemorrágico concurrente",
+          "2": "Disreflexia Autónoma. Un estímulo nocivo por debajo de la lesión (ej: vejiga llena) desencadena una descarga simpática masiva no modulada por el SNC",
+          "3": "Una infección sistémica que ha sobrepasado la barrera hematoencefálica",
+          "4": "Mala perfusión medular que causa isquemia y liberación de catecolaminas",
+          "correcta": 2
+        },
+        "sintomas": [
+          "🪓 Lesión cervical alta (C4) - Desconexión del control simpático central",
+          "📈 Hipertensión severa (220/130)",
+          "🧠 Cefalea explosiva",
+          "🍅 Rubor y sudoración por encima de la lesión",
+          "💓 Bradicardia (paradoja)"
+        ],
+        "retroalimentacion": {
+          "acierto": "¡NO LO PUEDO CREER! Disreflexia Autónoma. Has diagnosticado una de las urgencias más temidas. El primer movimiento es eliminar el estímulo (p. ej., sonda urinaria obstruida) para evitar ACV o edema pulmonar. Eres una Leyenda Viva.",
+          "fallo": "La clave es la desconexión: la lesión cervical alta desconecta el cerebro de la médula espinal. Un estímulo por debajo desencadena una tormenta simpática que el cerebro no puede apagar. La respuesta era B."
+        },
+        "recompensa": {
+          "PK": 50,
+          "logro": "La Leyenda del SNA",
+          "titulo": "Jefe de Servicio de Neurociencias",
+          "recompensa_final": "Puesto en el equipo de investigación de neurofarmacología de élite de la Dra. Jessica"
+        },
+        "dialogo": {
+          "recepcionista": "Ingreso en Jefe final absoluto: el fantasma simpático. Paciente listo para valoración. Resumen: Paciente con tetraplejia completa por trauma cervical alto (C4). A pesar de su lesión, es traído de urgencia por hipertensión severa (220/130 mmHg), cefalea explosiva, rubor y diaforesis por encima del nivel de la lesión, y bradicardia.",
+          "doctora": "¿Qué fenómeno mortal está ocurriendo y por qué es una urgencia extrema?"
         }
       }
     },
-    {
-      "id": 15,
-      "titulo": "Jefe final absoluto: el fantasma simpático",
-      "presentacion": {
-        "personaje": "Dra. Jessica",
-        "dialogo": "Este es el caso más desafiante que verás en tu carrera. Paciente con tetraplejia completa por trauma cervical alto (C4). A pesar de su lesión, es traído de urgencia por hipertensión severa (220/130 mmHg), cefalea explosiva, rubor y diaforesis por encima del nivel de la lesión, y bradicardia. ¿Qué fenómeno mortal está ocurriendo y por qué es una urgencia extrema?"
-      },
-      "sintomas": [
-        "Lesión cervical alta (C4) - desconexión del control simpático central",
-        "Hipertensión severa (220/130)",
-        "Cefalea explosiva",
-        "Rubor y sudoración por encima de la lesión",
-        "Bradicardia (paradoja con la hipertensión)"
-      ],
-      "opciones": {
-        "a": "Un accidente cerebrovascular hemorrágico concurrente.",
-        "b": "Disreflexia Autónoma. Un estímulo nocivo por debajo de la lesión desencadena una descarga simpática masiva no modulada por el SNC.",
-        "c": "Una infección sistémica que ha sobrepasado la barrera hematoencefálica.",
-        "d": "Mala perfusión medular que causa isquemia y liberación de catecolaminas."
-      },
-      "respuesta_correcta": "b",
-      "explicacion": "La Disreflexia Autónoma es una reacción mortal en pacientes con lesiones medulares por encima de T6. Un estímulo por debajo de la lesión (vejiga, intestino) activa los centros simpáticos de la médula espinal. Sin modulación inhibitoria desde el cerebro, se produce una descarga simpática masiva. Los barorreceptores intentan compensar con bradicardia y vasodilatación por encima de la lesión, pero no logran apagar el estímulo simpático.",
-      "retroalimentacion": {
-        "acierto": "¡NO LO PUEDO CREER! Disreflexia Autónoma. Has diagnosticado una de las urgencias más temidas en neurología. La vida del paciente dependía de que lo identificaras en segundos. Eres una Leyenda Viva.",
-        "fallo": "Este es el jefe final por una razón. La clave es la desconexión: la lesión cervical alta desconecta el cerebro de la médula espinal. El estímulo desencadena una tormenta simpática que el cerebro no puede apagar. La respuesta era B."
-      },
-      "recompensa": {
-        "PK": 50,
-        "logro": "La Leyenda del SNA",
-        "titulo": "Jefe de Servicio de Neurociencias",
-        "recompensa_final": "La Dra. Jessica te ofrece un puesto permanente en su equipo de investigación de neurofarmacología de élite."
-      }
+    "resumen": {
+      "PK_total_nivel": 120,
+      "PK_totales": 370,
+      "logros": "8/50",
+      "estado": "Leyenda"
     }
-  ],
-  "resumen": {
-    "animacion": "(La pantalla se llena de luz dorada. Suena una fanfarria épica).",
-    "dialogo_final": {
-      "personaje": "Dra. Jessica",
-      "dialogo": "Lo has hecho. Has completado todos los niveles. Has dominado lo básico, lo complejo, lo paradójico y lo absolutamente desconcertante. No soy fácil de impresionar, pero lo has logrado. El hospital está en las mejores manos posibles. Esto no es un adiós, es un 'hasta luego'. Recuerda, la medicina siempre tiene un caso más raro esperando a la vuelta de la esquina. ¡Mantente alerta!"
-    },
-    "PK_ganados": 120,
-    "PK_totales": 370,
-    "logros": "8/50",
-    "estado": "Leyenda",
-    "proximo_modo": "Escape Room - dificultad Legendaria"
   },
-  "modo": "Escape Room",
-  "dificultad": "Legendaria",
-  "intro_animacion": "(La pantalla se oscurece por completo. Solo se escucha la respiración de tu personaje y el leve zumbido de un servidor. De repente, una alarma parpadea en rojo y un mensaje de la Dra. Jessica aparece cifrado en la pantalla).",
-  "intro_dialogo": {
-    "personaje": "Dra. Jessica",
-    "dialogo": "¡No fue un accidente! Me encerraron aquí a mí también. Este no es un laboratorio normal. Es la sede de una corporación que desarrolla armas farmacológicas. Han pirateado el sistema del hospital. Para salir, necesitamos revertir el protocolo de envenenamiento que han activado en los servidores. ¡Cada sala controla un sistema vital de un paciente virtual! Si fallamos, el paciente muere y las puertas se sellan permanentemente. ¡Confío en ti!"
-  },
-  "contexto": "Estás atrapado en el Laboratorio de Farmacología Avanzada. Cada sala representa un 'Sistema de Órgano' crítico de un Paciente Virtual, que ha sido envenenado con un cóctel de fármacos de acción autonómica. Debes diagnosticar el envenenamiento y administrar el antídoto correcto para 'restaurar' el sistema y desbloquear la puerta. Tienes un tiempo limitado.",
-  "tiempo_por_sala": "2 minutos",
-  "vidas": 1,
-  "salas": [
-    {
-      "id": 1,
-      "titulo": "El corazón en la sombra",
-      "descripcion": "La puerta está sellada. En una pantalla, un monitor cardíaco muestra una taquiarritmia ventricular caótica (Fibrilación Ventricular). Un dispensador de antídotos tiene cuatro jeringas.",
-      "opciones": {
-        "A": "Atropina (Antagonista Muscarínico)",
-        "B": "Propranolol (Betabloqueante No Selectivo)",
-        "C": "Isoproterenol (Agonista β no selectivo)",
-        "D": "Lidocaína (Estabilizador de membrana - Bloqueante de canales de Na+)"
-      },
-      "acertijo": "El veneno hyper-stimula los receptores, pero bloquearlos ahora sería mortal. Busca la estabilidad, no la guerra.",
-      "respuesta_correcta": "D",
-      "explicacion": "La FV es una actividad eléctrica caótica. Se necesita un fármaco antiarrítmico de clase Ib como la Lidocaína, que estabiliza las membranas cardíacas al bloquear los canales de sodio, terminando con la arritmia letal. El acertijo apunta a 'estabilidad'.",
-      "resultado": "El ritmo cardíaco se normaliza a un ritmo sinusal. La puerta se desbloquea con un zumbido."
-    },
-    {
-      "id": 2,
-      "titulo": "La trampa de los vasos",
-      "descripcion": "Esta sala es fría. La pantalla muestra una presión arterial de 70/40 mmHg (Shock). Hay cuatro botones, cada uno con un fármaco vasoactivo.",
-      "opciones": {
-        "A": "Fenoxibenzamina (Bloqueante α no selectivo irreversible)",
-        "B": "Nitroprusiato (Donador de Óxido Nítrico - Vasodilatador)",
-        "C": "Noradrenalina (Agonista α1 > β1)",
-        "D": "Salbutamol (Agonista β2 selectivo)"
-      },
-      "acertijo": "La dilatación es la trampa. El veneno tejió una red de falsa relajación. Solo la constricción pura romperá el hechizo.",
-      "respuesta_correcta": "C",
-      "explicacion": "El shock sugiere vasodilatación masiva. La Noradrenalina es el agonista α1 vasoconstrictor que contrae los vasos y sube la presión arterial. Los otros empeorarían la hipotensión.",
-      "resultado": "La presión arterial sube a 120/80 mmHg. Una puerta oculta se abre revelando un pasillo estrecho."
-    },
-    {
-      "id": 3,
-      "titulo": "El dilema bronquial",
-      "descripcion": "Sala llena de humo. Un ventilador mecánico muestra espasmo bronquial severo (presión de vía aérea altísima). Un dispensador ofrece cuatro opciones.",
-      "opciones": {
-        "A": "Acetilcolina",
-        "B": "Prazosín (Bloqueante α1)",
-        "C": "Adrenalina (Agonista α1, β1, β2)",
-        "D": "Metoprolol (Betabloqueante β1 selectivo)"
-      },
-      "acertijo": "El humo ciega el camino. Se necesita una llave maestra que destrabe todos los candados a la vez, no una sola cerradura.",
-      "respuesta_correcta": "C",
-      "explicacion": "El humo causa broncoconstricción masiva. Se necesita un agonista no selectivo de acción rápida. La Adrenalina actúa sobre β2 para broncodilatación y α1 para reducir edema. Es la 'llave maestra'.",
-      "resultado": "La presión de la vía aérea cae inmediatamente. Una rejilla de ventilación en el techo se abre."
-    },
-    {
-      "id": 4,
-      "titulo": "El jardín químico (síntesis final)",
-      "descripcion": "Has llegado al núcleo del laboratorio. La Dra. Jessica está en una cápsula sellada. Frente a ti, un sintetizador molecular con receta: 'Sintetizar el antídoto universal: Antagonista Colinérgico de acción central y periférica, lipofílico, con duración intermedia.'",
-      "opciones": {
-        "A": "Glicopirrolato (Antagonista Muscarínico, periférico)",
-        "B": "Bencilato de Hiosciamina (Antagonista Muscarínico, central y periférico, duración intermedia)",
-        "C": "Neostigmina (Inhibidor de Colinesterasa - Agonista)",
-        "D": "Fisostigmina (Inhibidor de Colinesterasa, lipofílico)"
-      },
-      "acertijo": "Para vencer al maestro del veneno, necesitas el escudo y la espada que penetre la fortaleza de la mente y el cuerpo.",
-      "respuesta_correcta": "B",
-      "explicacion": "Se requiere un antídoto que actúe en SNC y periferia, antagonista muscarínico. La Hiosciamina lipofílica cumple ambos criterios y duración intermedia. Los otros fármacos no cumplen todos los requisitos.",
-      "resultado": "Un brazo robótico inyecta el antídoto. Todas las luces del laboratorio se vuelven verdes. La cápsula de la Dra. Jessica se libera."
-    }
-  ],
-  "final": {
-    "dialogo": {
-      "personaje": "Dra. Jessica",
-      "texto": "¡Lo hiciste! ¡Eso fue increíble! No solo diagnosticastes envenenamientos autonómicos complejos, sino que aplicaste la farmacología correcta bajo presión extrema. Eres la única persona que podría haberlo logrado. Ahora, ¡salgamos de aquí y asegurémonos de que esta corporación nunca más vuelva a intentar algo así!"
-    },
-    "resultado_final": "La puerta principal se abre. Has ganado."
-  },
-  "recompensas": {
-    "logro": "Héroe del Sistema Nervioso Autónomo",
-    "titulo": "Maestro Farmacólogo de Emergencias",
-    "modo_desbloqueado": "Contrarreloj Endless - Casos aleatorios de todos los niveles cada 45 segundos",
-    "bonus": "La Dra. Jessica se convierte en un personaje desbloqueable para usar sus pistas en otros modos de juego"
+  "modo_escape_room_leg": {
+    "estado": "Disponible",
+    "descripcion": "¿Te atreves con el MODO ESCAPE ROOM en dificultad LEGENDARIA?"
   }
 }

@@ -1,57 +1,120 @@
 .game-container {
-  
   background-image: url("../../assets/backgrounds/clinica.jpeg"); /* pon tu imagen en public/fondo.jpg */
   background-size: cover;
   background-position: center;
-
 }
-
 
 /* --- PARPADEO --- */
 @keyframes flicker-weak {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.85; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
 }
 @keyframes flicker-medium {
-  0%, 19%, 21%, 100% { opacity: 1; }
-  20%, 22% { opacity: 0.6; }
+  0%,
+  19%,
+  21%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  22% {
+    opacity: 0.6;
+  }
 }
 @keyframes flicker-strong {
-  0%, 19%, 21%, 23%, 25%, 100% { opacity: 1; }
-  20%, 24% { opacity: 0.3; }
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24% {
+    opacity: 0.3;
+  }
 }
 @keyframes flicker-insane {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0.1; }
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0.1;
+  }
 }
 
 /* --- SACUDIDA --- */
 @keyframes shake-weak {
-  0%,100% { transform: translate(0,0) rotate(0); }
-  50% { transform: translate(-1px,1px) rotate(-0.5deg); }
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  50% {
+    transform: translate(-1px, 1px) rotate(-0.5deg);
+  }
 }
 @keyframes shake-medium {
-  0%,100% { transform: translate(0,0) rotate(0); }
-  25% { transform: translate(-2px,0) rotate(-1deg); }
-  75% { transform: translate(2px,0) rotate(1deg); }
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  25% {
+    transform: translate(-2px, 0) rotate(-1deg);
+  }
+  75% {
+    transform: translate(2px, 0) rotate(1deg);
+  }
 }
 @keyframes shake-strong {
-  0%,100% { transform: translate(0,0) rotate(0); }
-  20% { transform: translate(-3px,1px) rotate(-2deg); }
-  40% { transform: translate(3px,-1px) rotate(2deg); }
-  60% { transform: translate(-3px,2px) rotate(-2deg); }
-  80% { transform: translate(3px,-2px) rotate(2deg); }
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  20% {
+    transform: translate(-3px, 1px) rotate(-2deg);
+  }
+  40% {
+    transform: translate(3px, -1px) rotate(2deg);
+  }
+  60% {
+    transform: translate(-3px, 2px) rotate(-2deg);
+  }
+  80% {
+    transform: translate(3px, -2px) rotate(2deg);
+  }
 }
 @keyframes shake-insane {
-  0%,100% { transform: translate(0,0) rotate(0); }
-  20% { transform: translate(-5px,3px) rotate(-3deg); }
-  40% { transform: translate(5px,-3px) rotate(3deg); }
-  60% { transform: translate(-5px,3px) rotate(-3deg); }
-  80% { transform: translate(5px,-3px) rotate(3deg); }
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  20% {
+    transform: translate(-5px, 3px) rotate(-3deg);
+  }
+  40% {
+    transform: translate(5px, -3px) rotate(3deg);
+  }
+  60% {
+    transform: translate(-5px, 3px) rotate(-3deg);
+  }
+  80% {
+    transform: translate(5px, -3px) rotate(3deg);
+  }
 }
 
-/* --- CLASES DE NIVEL --- */
-.level-1 { /* sin efecto */ }
+/* --- CLASES DE NIVEL AJUSTADAS --- */
+.level-1 {
+  /* sin efecto */
+}
 
 .level-2 {
   animation: flicker-weak 3s infinite;
@@ -66,5 +129,6 @@
 }
 
 .level-5 {
-  animation: flicker-insane 1.5s infinite, shake-insane 0.4s infinite;
+  /* antes era insane, ahora se queda como el nivel 4 */
+  animation: flicker-strong 1.8s infinite, shake-medium 0.7s infinite;
 }
